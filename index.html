@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of People Who Owe Money</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💰</text></svg>">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            margin: 0;
+            padding: 0;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Container for the content */
+        .container {
+            max-width: 800px;
+            width: 90%;
+            margin: 20px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        /* Header Styles */
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        /* List Styles */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background: #fff;
+            margin: 15px 0;
+            padding: 20px;
+            border-left: 5px solid #3498db;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            position: relative;
+        }
+
+        li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Amount Styles */
+        .amount {
+            font-weight: bold;
+            color: #e74c3c;
+            font-size: 1.2em;
+        }
+
+        /* Total Sum Styles */
+        #total-sum {
+            text-align: right;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #2c3e50;
+        }
+
+        /* Popup Styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            width: 300px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            animation: slideIn 0.3s ease;
+        }
+
+        .popup.active {
+            display: block;
+        }
+
+        .popup img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .popup h3 {
+            margin: 0 0 10px;
+            font-size: 1.5em;
+            color: #2c3e50;
+        }
+
+        .popup p {
+            margin: 5px 0;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .popup button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #777;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+            li {
+                flex-direction: column;
+                text-align: center;
+            }
+            .amount {
+                margin-top: 10px;
+            }
+            .popup {
+                width: 90%;
+                right: 5%;
+            }
+        }
+
+        /* Dark Mode Styles */
+        .dark-mode {
+            background: linear-gradient(135deg, #1e1e2f, #2c3e50);
+            color: #fff;
+        }
+        .dark-mode .container {
+            background: rgba(40, 40, 60, 0.95);
+            color: #fff;
+        }
+        .dark-mode li {
+            background: #2c3e50;
+            color: #fff;
+        }
+        .dark-mode .amount {
+            color: #ff6b6b;
+        }
+        .dark-mode #total-sum {
+            color: #fff;
+        }
+        .dark-mode .popup {
+            background: #2c3e50;
+            color: #fff;
+        }
+        .dark-mode .popup h3 {
+            color: #fff;
+        }
+        .dark-mode .popup p {
+            color: #ddd;
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-50%) translateX(20px); }
+            to { opacity: 1; transform: translateY(-50%) translateX(0); }
+        }
+
+        /* Add Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    </style>
+</head>
+<body>
+    <button id="theme-toggle" style="position: fixed; top: 20px; right: 20px; padding: 10px 15px; background: #3498db; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+        Toggle Dark Mode
+    </button>
+    <div class="container">
+        <h1>List of People Who Owe Money</h1>
+        <input type="text" id="search" placeholder="Search for a name..." style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; font-size: 1em;">
+        <ul>
+            <li data-details="Ritesh Kumar Chauhan" data-image="https://via.placeholder.com/300" data-amount="5.5 Lakh INR" data-date="2023-10-01" data-notes="Loan for business">
+                <span>Ritesh Kumar Chauhan</span>
+                <span class="amount">5.5 Lakh INR</span>
+            </li>
+            <li data-details="Pankaj Kumar Gupta" data-image="https://via.placeholder.com/300" data-amount="19 Thousand INR" data-date="2023-09-15" data-notes="Personal loan">
+                <span>Pankaj Kumar Gupta</span>
+                <span class="amount">19 Thousand INR</span>
+            </li>
+            <li data-details="Bibek Yadav" data-image="https://via.placeholder.com/300" data-amount="4.9 Thousand INR" data-date="2023-08-20" data-notes="Emergency fund">
+                <span>Bibek Yadav</span>
+                <span class="amount">4.9 Thousand INR</span>
+            </li>
+            <li data-details="Aman Karn" data-image="https://via.placeholder.com/300" data-amount="5000 INR" data-date="2023-07-10" data-notes="Medical expenses">
+                <span>Aman Karn</span>
+                <span class="amount">5000 INR</span>
+            </li>
+            <li data-details="Anmol Mishra" data-image="https://via.placeholder.com/300" data-amount="1540 INR" data-date="2023-06-05" data-notes="Travel expenses">
+                <span>Anmol Mishra</span>
+                <span class="amount">1540 INR</span>
+            </li>
+            <li data-details="Avinash Khatri" data-image="https://via.placeholder.com/300" data-amount="2300 INR" data-date="2023-05-01" data-notes="Education fee">
+                <span>Avinash Khatri</span>
+                <span class="amount">2300 INR</span>
+            </li>
+        </ul>
+        <p id="total-sum"></p>
+        <footer>
+            <p id="last-updated"></p>
+        </footer>
+    </div>
+
+    <!-- Popup -->
+    <div class="popup">
+        <img id="popup-image" src="" alt="Person Image">
+        <h3 id="popup-name"></h3>
+        <p><strong>Amount:</strong> <span id="popup-amount"></span></p>
+        <p><strong>Date:</strong> <span id="popup-date"></span></p>
+        <p><strong>Notes:</strong> <span id="popup-notes"></span></p>
+        <button id="close-popup">Close</button>
+    </div>
+
+    <script>
+        // Search functionality
+        document.getElementById('search').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const listItems = document.querySelectorAll('li');
+
+            listItems.forEach(item => {
+                const name = item.querySelector('span').textContent.toLowerCase();
+                if (name.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // Dark mode toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+        });
+
+        // Last updated timestamp
+        const lastUpdated = document.getElementById('last-updated');
+        const date = new Date();
+        lastUpdated.textContent = `Last updated: ${date.toLocaleString()}`;
+
+        // Calculate total sum
+        function calculateTotalSum() {
+            const amounts = document.querySelectorAll('.amount');
+            let total = 0;
+            amounts.forEach(amount => {
+                const value = parseFloat(amount.textContent.replace(/[^0-9.]/g, ''));
+                if (amount.textContent.includes('Lakh')) {
+                    total += value * 100000; // Convert lakh to rupees
+                } else if (amount.textContent.includes('Thousand')) {
+                    total += value * 1000; // Convert thousand to rupees
+                } else {
+                    total += value; // Assume it's already in rupees
+                }
+            });
+            document.getElementById('total-sum').textContent = `Total Amount Owed: ₹${total.toLocaleString()}`;
+        }
+
+        calculateTotalSum(); // Initial calculation
+
+        // Popup functionality
+        const popup = document.querySelector('.popup');
+        const popupImage = document.getElementById('popup-image');
+        const popupName = document.getElementById('popup-name');
+        const popupAmount = document.getElementById('popup-amount');
+        const popupDate = document.getElementById('popup-date');
+        const popupNotes = document.getElementById('popup-notes');
+        const closePopup = document.getElementById('close-popup');
+
+        document.querySelectorAll('li').forEach(item => {
+            item.addEventListener('click', () => {
+                const image = item.getAttribute('data-image');
+                const name = item.getAttribute('data-details');
+                const amount = item.getAttribute('data-amount');
+                const date = item.getAttribute('data-date');
+                const notes = item.getAttribute('data-notes');
+
+                popupImage.src = image;
+                popupName.textContent = name;
+                popupAmount.textContent = amount;
+                popupDate.textContent = date;
+                popupNotes.textContent = notes;
+
+                popup.classList.add('active');
+            });
+        });
+
+        closePopup.addEventListener('click', () => {
+            popup.classList.remove('active');
+        });
+
+        // Close popup when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('li') && !event.target.closest('.popup')) {
+                popup.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
