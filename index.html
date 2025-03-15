@@ -74,6 +74,32 @@
             font-size: 1.2em;
         }
 
+        /* Countdown Timer Styles */
+
+     
+        .countdown {
+            display: flex;
+            gap: 10px;
+            margin-left: 10px;
+        }
+
+        .countdown div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #3498db;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            perspective: 1000px;
+        }
+
+        .countdown div small {
+            font-size: 0.8em;
+            color: #ddd;
+        }
+
         /* Total Sum Styles */
         #total-sum {
             text-align: right;
@@ -206,29 +232,71 @@
         <h1>List of People Who Owe Money</h1>
         <input type="text" id="search" placeholder="Search for a name..." style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; font-size: 1em;">
         <ul>
-            <li data-details="Ritesh Kumar Chauhan" data-image="Ritesh.png" data-amount="Rs.4,450 INR" data-date="2025-10-01" data-notes="Old : 350 + Rs.100 * 3 (Cash)+ Rs.200 * 2 (Cash) + 3400 Cash, Rolex Watch">
-                <span>Ritesh Kumar Chauhan</span>
-                <span class="amount">Rs.4,450 INR (Latest) CASH </span>
+
+            <li data-details="Ritesh Kumar Chauhan" data-image="Ritesh.png" data-amount="Rs.4,450 INR" data-date="2025-03-10" data-notes="Old : 350 + Rs.100 * 3 (Cash)+ Rs.200 * 2 (Cash) + 3400 Cash, Rolex Watch">
+                <span>Ritesh Chauhan</span>
+                <span class="amount">4,450 INR </span>
+                <div class="countdown">
+                    <div><span id="days1">00</span><small>Days</small></div>
+                    <div><span id="hours1">00</span><small>Hours</small></div>
+                    <div><span id="minutes1">00</span><small>Minutes</small></div>
+                    <div><span id="seconds1">00</span><small>Seconds</small></div>
+                </div>
             </li>
-            <li data-details="Pankaj Kumar Gupta" data-image="https://via.placeholder.com/300" data-amount="17 Thousand INR" data-date="2023-09-15" data-notes="Credit Card , Total : 20,000 ">
+
+            <li data-details="Abhinav Aman" data-image="Aman.png" data-amount="5,000 INR" data-date="2025-03-12" data-notes="ATM CASH DEPOSIT ">
+                <span>Abhinav Aman</span>
+                <span class="amount">5,000 INR </span>
+                <div class="countdown">
+                    <div><span id="days2">00</span><small>Days</small></div>
+                    <div><span id="hours2">00</span><small>Hours</small></div>
+                    <div><span id="minutes2">00</span><small>Minutes</small></div>
+                    <div><span id="seconds2">00</span><small>Seconds</small></div>
+                </div>
+            </li>
+
+            <li data-details="Anmol Mishra" data-image="Anmol.png" data-amount="1,540 INR" data-date="2025-03-06" data-notes=" FOOD : 500 *2 , Dipesh : 340 + ATM left : 200">
+                <span>Anmol Mishra</span>
+                <span class="amount">1,540 INR </span>
+                <div class="countdown">
+                    <div><span id="days3">00</span><small>Days</small></div>
+                    <div><span id="hours3">00</span><small>Hours</small></div>
+                    <div><span id="minutes3">00</span><small>Minutes</small></div>
+                    <div><span id="seconds3">00</span><small>Seconds</small></div>
+                </div>
+            </li>
+
+            <li data-details="Pankaj Kumar Gupta" data-image="Pankaj.png" data-amount="17 Thousand INR" data-date="2024-03-04" data-notes="Credit Card , Total : 20,000 ">
                 <span>Pankaj Kumar Gupta</span>
                 <span class="amount">17 Thousand INR (Old)</span>
+                <div class="countdown">
+                    <div><span id="days4">00</span><small>Days</small></div>
+                    <div><span id="hours4">00</span><small>Hours</small></div>
+                    <div><span id="minutes4">00</span><small>Minutes</small></div>
+                    <div><span id="seconds4">00</span><small>Seconds</small></div>
+                </div>
             </li>
-            <li data-details="Bibek Yadav" data-image="https://via.placeholder.com/300" data-amount="4.9 Thousand INR" data-date="2023-08-20" data-notes="Iphone Loan , Total : 5500">
+
+            <li data-details="Bibek Yadav" data-image="Bibek.png" data-amount="4.9 Thousand INR" data-date="2023-08-20" data-notes="Iphone Loan , Total : 5500">
                 <span>Bibek Yadav</span>
                 <span class="amount">4.9 Thousand INR (Old)</span>
+                <div class="countdown">
+                    <div><span id="days5">00</span><small>Days</small></div>
+                    <div><span id="hours5">00</span><small>Hours</small></div>
+                    <div><span id="minutes5">00</span><small>Minutes</small></div>
+                    <div><span id="seconds5">00</span><small>Seconds</small></div>
+                </div>
             </li>
-            <li data-details="**** ****" data-image="https://via.placeholder.com/300" data-amount="Rs.5,000 INR" data-date="2025-Mar-3" data-notes="ATM CASH DEPOSIT">
-                <span>**** ****</span>
-                <span class="amount">Rs.5,000 INR (Latest) CASH</span>
-            </li>
-            <li data-details="***** ******" data-image="https://via.placeholder.com/300" data-amount="Rs.1,540 INR" data-date="2025-Mar-1" data-notes=" FOOD : 500 *2 Dipesh : 340 + ATM left : 200">
-                <span>***** ******</span>
-                <span class="amount">Rs.1,540 INR (Latest) CASH</span>
-            </li>
+
             <li data-details="Avinash Khatri" data-image="https://via.placeholder.com/300" data-amount="Rs.2,300" data-date="2023-05-01" data-notes="Forex , Total : 6300">
                 <span>Avinash Khatri</span>
                 <span class="amount">Rs.2,300 (OLD)</span>
+                <div class="countdown">
+                    <div><span id="days6">00</span><small>Days</small></div>
+                    <div><span id="hours6">00</span><small>Hours</small></div>
+                    <div><span id="minutes6">00</span><small>Minutes</small></div>
+                    <div><span id="seconds6">00</span><small>Seconds</small></div>
+                </div>
             </li>
         </ul>
         <p id="total-sum"></p>
@@ -332,6 +400,36 @@
                 popup.classList.remove('active');
             }
         });
+
+        // Function to update the elapsed time
+        function updateElapsedTime() {
+            const countdownElements = document.querySelectorAll('.countdown');
+            const now = new Date().getTime();
+
+            countdownElements.forEach((element, index) => {
+                const parentLi = element.closest('li');
+                const startDate = new Date(parentLi.getAttribute('data-date')).getTime();
+                const timeElapsed = now - startDate;
+
+                if (timeElapsed > 0) {
+                    const days = Math.floor(timeElapsed / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((timeElapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeElapsed % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeElapsed % (1000 * 60)) / 1000);
+
+                    element.querySelector('#days' + (index + 1)).textContent = days;
+                    element.querySelector('#hours' + (index + 1)).textContent = hours;
+                    element.querySelector('#minutes' + (index + 1)).textContent = minutes;
+                    element.querySelector('#seconds' + (index + 1)).textContent = seconds;
+                } else {
+                    element.innerHTML = "<div>Timer not started!</div>";
+                }
+            });
+        }
+
+        // Update elapsed time every second
+        setInterval(updateElapsedTime, 1000);
+        updateElapsedTime(); // Initial call
     </script>
 </body>
 </html>
