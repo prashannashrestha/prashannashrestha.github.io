@@ -227,8 +227,16 @@ html {
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
+/* --------------------------------  Red Text Bold ------------------------------------------------- */
+.red_text {
+    color: #e74c3c;
+    font-weight: bold;
+    font-size: 1.2em;
 
-.amount {
+}
+
+/* ------------------------------ Red Text with Box ------------------------------------------------ */
+.red_boxtext {
     font-weight: bold;
     color: #e74c3c;
     font-size: 1.2em;
@@ -239,17 +247,32 @@ html {
 
        
 
- /*--------------------------------------------------------------------------*/
+ /*---------------------- Name Class (Black , Pulse , Bold )---------------------------------------------- */
+/* Names of Person */
 .name {
     font-weight: bold;
     color: #000000;
-    font-size: 1.2em;
+    font-size: 1.5em;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     position: relative;
     display: inline-block;
     animation: pulse 1.5s ease-in-out infinite;
     transition: all 0.3s ease;
 }
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* ------------------------------------------------------------------------------------------------------------- */
 /*---OLD STYLE-----*/
 
 .old_amount{
@@ -261,17 +284,6 @@ html {
     display: inline-block;
     animation: pulse 1.5s ease-in-out infinite;
     transition: all 0.3s ease;
-}
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
-    100% {
-        transform: scale(1);
-    }
 }
 
 .old_amount::after {
@@ -389,10 +401,6 @@ html {
             color: #777;
         }
 
-.red-text {
-    color: red;
-}
-
         /* Responsive Design */
         @media (max-width: 600px) {
             h1 {
@@ -482,7 +490,7 @@ img {
 
                     <li data-details="Pankaj Kumar Gupta" data-image="friends/Pankaj.png" data-amount="17,000 INR" data-date="2024-03-04" data-notes="Credit Card , Total : 20,000 ">
                 <span>Pankaj Gupta</span>
-                <span class="amount">17,000 INR (Old)</span>
+                <span class="red_boxtext">17,000 INR (Old)</span>
                 <div class="countdown">
                     <div><span id="days4">00</span><small>Days</small></div>
                     <div><span id="hours4">00</span><small>Hours</small></div>
@@ -493,7 +501,7 @@ img {
 
             <li data-details="Bibek Yadav" data-image="friends/Bibek.png" data-amount="4,900 INR" data-date="2023-08-20" data-notes="Iphone Loan , Total : 5500">
                 <span>Bibek Yadav</span>
-                <span class="amount">4,900 INR (Old)</span>
+                <span class="red_boxtext">4,900 INR (Old)</span>
                 <div class="countdown">
                     <div><span id="days5">00</span><small>Days</small></div>
                     <div><span id="hours5">00</span><small>Hours</small></div>
@@ -504,7 +512,7 @@ img {
 
             <li data-details="Avinash Khatri" data-image="https://via.placeholder.com/300" data-amount="2,300 INR" data-date="2023-05-01" data-notes="Forex , Total : 6300   (4000 CASH ME -> ANIKET) + 300 (ANMOL GPAY)">
                 <span>Avinash Khatri</span>
-                <span class="amount">2,000 INR (OLD)</span>
+                <span class="red_boxtext">2,000 INR (OLD)</span>
                 <div class="countdown">
                     <div><span id="days6">00</span><small>Days</small></div>
                     <div><span id="hours6">00</span><small>Hours</small></div>
@@ -521,11 +529,10 @@ img {
        </div>
     </div>
  <!--  ------------------------------------------------Flex Card 2 --------------------------------------------------------------------- -->
-        <div class="card">
-           <div class="container">
-
-                 <h1>Extra record</h1>
-                  <h1>1. Rohit Bank Deposit : </h1> <div class="download-btn"> 2,700 </div> 
+    <div class="card">
+    <div class="container">
+          <h1>Extra record</h1>
+          <span class="name">1. Rohit Bank Deposit : </span> <div class="download-btn"> 2,700 </div> 
 <br>
 <p class="neon-text">Note : Gave 2700 to Ritesh  Cash</p>
   <table  class="custom-table">
@@ -576,7 +583,7 @@ img {
     </tr>
   </tbody>
 </table>
-                  <h1>2. Surya Prakash Shah : </h1> <div class="download-btn"> 260 </div> 
+                  <span class="name">2. Surya Prakash Shah : </span> <div class="download-btn"> 260 </div> 
                   <br>
                    <p class="neon-text">Note : Ritesh whatsapp Surya  260 ic -> 400 NC Pending </p>
 
@@ -584,57 +591,109 @@ img {
              </div>
         </div>
  <!--  ------------------------------------------------Flex Card 3 --------------------------------------------------------------------- -->
+  <div class="card">
+  <div class="container">         
+ 
+        <h1><img src="esewa_logo.png" alt="Description of image" height="100" width="150" style="float: left;"  class="logo-img"> ESEWA DETAILS!</h1>
+        <h2>Ritesh Kumar Chauhan</h2>  
+        <h4>9818837216 || 9818837215</h4>
+        <h1> APRIL 2024</h1>
+              <img src="esewa_statements/1. APR 4.png" alt="Description of the image" width="500" height="100">
 
-       <div class="card">
-           <div class="container">          
-       
+        <h1> JUNE 2024</h1>
+               <img src="esewa_statements/2. JUNE 5.png" alt="Description of the image" width="500" height="100">
+               <img src="esewa_statements/3. JUNE 29.png" alt="Description of the image" width="500" height="100">
+   
+       <h1> JULY 2024</h1>
+               <img src="esewa_statements/4. JULY 2.png" alt="Description of the image" width="500" height="100">
+               <img src="esewa_statements/5. JULY 8.png" alt="Description of the image" width="500" height="100">
+               <img src="esewa_statements/6. JULY 8_.png" alt="Description of the image" width="500" height="100">
 
-         <h1><img src="esewa_logo.png" alt="Description of image" height="100" width="150" style="float: left;"  class="logo-img"> ESEWA DETAILS!</h1>
-         <h2>Ritesh Kumar Chauhan</h2>
-          <h4>9818837216 || 9818837215</h4>
-           <h1> APRIL 2024</h1>
-<img src="esewa_statements/1. APR 4.png" alt="Description of the image" width="500" height="100">
+       <h1> AUG 2024</h1>
+               <img src="esewa_statements/7. AUG 15.png" alt="Description of the image" width="500" height="100">
+               <img src="esewa_statements/8. AUG 25.png" alt="Description of the image" width="500" height="100">
+               <img src="esewa_statements/9. AUG 25_.png" alt="Description of the image" width="500" height="100">
 
-           <h1> JUNE 2024</h1>
-<img src="esewa_statements/2. JUNE 5.png" alt="Description of the image" width="500" height="100">
-<img src="esewa_statements/3. JUNE 29.png" alt="Description of the image" width="500" height="100">
-
-           <h1> JULY 2024</h1>
-<img src="esewa_statements/4. JULY 2.png" alt="Description of the image" width="500" height="100">
-<img src="esewa_statements/5. JULY 8.png" alt="Description of the image" width="500" height="100">
-<img src="esewa_statements/6. JULY 8_.png" alt="Description of the image" width="500" height="100">
-
-           <h1> AUG 2024</h1>
-<img src="esewa_statements/7. AUG 15.png" alt="Description of the image" width="500" height="100">
-<img src="esewa_statements/8. AUG 25.png" alt="Description of the image" width="500" height="100">
-<img src="esewa_statements/9. AUG 25_.png" alt="Description of the image" width="500" height="100">
-
-           <h1> OCTOBER 2024</h1>
-<img src="OCT 17.jpg" alt="Description of the image" width="500" height="100">
-<img src="OCT 18.jpg" alt="Description of the image" width="500" height="100">
-<img src="OCT 29.jpg" alt="Description of the image" width="500" height="100">
-<img src="OCT 29_1.jpg" alt="Description of the image" width="500" height="100">
+        <h1> OCTOBER 2024</h1>
+               <img src="OCT 17.jpg" alt="Description of the image" width="500" height="100">
+               <img src="OCT 18.jpg" alt="Description of the image" width="500" height="100">
+               <img src="OCT 29.jpg" alt="Description of the image" width="500" height="100">
+               <img src="OCT 29_1.jpg" alt="Description of the image" width="500" height="100">
 
       <span class="old_amount">Total : Rs.38,200 NC</span>
-<br>
-<br>
-<br>
+
+      <br> <br> <br>
+
 <a href="1.esewa_9818837215.zip" download>
   <button class="download-btn">Download Esewa Statements (9818837215)</button>
-</a>
-<br>
+</a>                              <br>
 <a href="2.prabhu_statements_2023.zip" download>
   <button class="download-btn">Download Prabhu Statements (2023)</button>
-</a>
-<br>
+</a>                              <br>
 <a href="3.prabhu_statements_2024.zip" download>
   <button class="download-btn">Download Prabhu Statements (2024)</button>
 </a>
 
-
-        </div>
+ </div>
 </div>
+
  <!--  ------------------------------------------------Flex Card 4 --------------------------------------------------------------------- -->
+
+        <div class="card">
+           <div class="container">
+
+                 <h1>Esewa Summary Usage By Ritesh</h1>
+                
+
+                 <h1>Transaction Summary (April → June → July 2024)</h1>
+
+    <h2>📅 April 2024</h2>
+    <div class="note">Initial Balance: ₹0</div>
+    <table class="custom-table">
+      <tr><th>Date</th><th>Time</th><th>Details</th><th>Amount</th></tr>
+      <tr><td class="red_text">Apr 4</td><td>02:23:39</td><td class="red_text">Received from PRABHU BANK LTD</td><td class="red_text">₹5,600</td></tr>
+      <tr><td>Apr 4</td><td>05:07:26</td><td>Received from NMB BANK LTD</td><td>₹600</td></tr>
+      <tr><td>Apr 5</td><td>02:02:20</td><td>Sent to Abhinav Aman</td><td>-₹6,000</td></tr>
+      <tr><td colspan="4" class="final">Final Balance (April): ₹200</td></tr>
+    </table>
+
+    <h2>📅 June 2024 — Part 1</h2>
+    <div class="note">Initial Balance: ₹270.48</div>
+    <table class="custom-table">
+      <tr><th>Date</th><th>Time</th><th>Details</th><th>Amount</th></tr>
+      <tr><td class="red_text">Jun 5</td><td>01:34:41</td><td class="red_text">Received from PRABHU BANK LTD</td><td class="red_text">₹1,000</td></tr>
+      <tr><td>Jun 5</td><td>01:35:18</td><td>Received from GLOBAL IME BANK LTD</td><td>₹1,000</td></tr>
+      <tr><td>Jun 5</td><td>01:43:31</td><td>Paid for Ncell Pack</td><td>-₹60</td></tr>
+      <tr><td>Jun 5</td><td>01:49:38</td><td>Sent to Rajesh Kumar Bose</td><td>-₹1,500</td></tr>
+      <tr><td colspan="4" class="final">Final Balance (June 5): ₹710.48</td></tr>
+    </table>
+
+    <h2>📅 June 2024 — Part 2</h2>
+    <div class="note">Initial Balance: ₹30</div>
+    <table class="custom-table">
+      <tr><th>Date</th><th>Time</th><th>Details</th><th>Amount</th></tr>
+      <tr><td class="red_text">Jun 29</td><td>15:53:31</td><td class="red_text">Received from PRABHU BANK LTD</td><td class="red_text">₹4,000</td></tr>
+      <tr><td>Jun 29</td><td>16:08:23</td><td>Paid to NEW GANESH HOTEL</td><td>-₹3,500</td></tr>
+      <tr><td>Jun 29</td><td>18:00:28</td><td>Sent to Bibek Chauhan</td><td>-₹200</td></tr>
+      <tr><td>Jun 29</td><td>18:55:47</td><td>Bank transfer charges</td><td>-₹10</td></tr>
+      <tr><td>Jun 29</td><td>21:11:35</td><td>Sent to Pawan Kumar Mahato</td><td>-₹200</td></tr>
+      <tr><td>Jun 29</td><td>21:19:16</td><td>Ncell top-up</td><td>-₹100</td></tr>
+      <tr><td colspan="4" class="final">Final Balance (June 29): ₹20.48</td></tr>
+    </table>
+
+    <h2>📅 July 2024</h2>
+    <div class="note">Initial Balance: ₹20.48</div>
+    <table class="custom-table">
+      <tr><th>Date</th><th>Time</th><th>Details</th><th>Amount</th></tr>
+      <tr><td class="red_text">Jul 2</td><td>00:38:03</td><td class="red_text">Received from PRABHU BANK LTD</td><td class="red_text">₹3,000</td></tr>
+      <tr><td>Jul 2</td><td>00:39:11</td><td>Sent to Rajesh Kumar Bose</td><td>-₹3,000</td></tr>
+      <tr><td colspan="4" class="final">Final Balance (July): ₹20.48</td></tr>
+    </table>
+
+
+</div>
+</div>
+ <!--  ------------------------------------------------Flex Card 5 --------------------------------------------------------------------- -->
 
         <div class="card">
            <div class="container">
@@ -753,13 +812,13 @@ function highlightCashText() {
     let cashExtra = listItem.getAttribute('data-extra'); // Get the value of data-cash
 
     // Wrap "9,000 Nc Cash" and "14,000 Nc Cash" in <span> tags with the red-text class
-    cashText = cashText.replace(/9,000 Nc Cash/g, '<span class="red-text">9,000 Nc Cash</span>');
-    cashText = cashText.replace(/14,000 Nc Cash/g, '<span class="red-text">14,000 Nc Cash</span>');
-    cashExtra = cashExtra.replace(/1230 INR/g, '<span class="red-text">1230 INR</span>');
-    cashExtra = cashExtra.replace(/800 INR/g, '<span class="red-text">800 INR</span>');
-    cashExtra = cashExtra.replace(/1000 INR/g, '<span class="red-text">1000 INR</span>');
-    cashExtra = cashExtra.replace(/4000 INR/g, '<span class="red-text">4000 INR</span>');
-    cashExtra = cashExtra.replace(/6510 INR/g, '<span class="red-text">6510 INR</span>');
+    cashText = cashText.replace(/9,000 Nc Cash/g, '<span class="red_text">9,000 Nc Cash</span>');
+    cashText = cashText.replace(/14,000 Nc Cash/g, '<span class="red_text">14,000 Nc Cash</span>');
+    cashExtra = cashExtra.replace(/1230 INR/g, '<span class="red_text">1230 INR</span>');
+    cashExtra = cashExtra.replace(/800 INR/g, '<span class="red_text">800 INR</span>');
+    cashExtra = cashExtra.replace(/1000 INR/g, '<span class="red_text">1000 INR</span>');
+    cashExtra = cashExtra.replace(/4000 INR/g, '<span class="red_text">4000 INR</span>');
+    cashExtra = cashExtra.replace(/6510 INR/g, '<span class="red_text">6510 INR</span>');
 
     // Update the data-cash attribute with the new HTML
     listItem.setAttribute('data-cash', cashText);
