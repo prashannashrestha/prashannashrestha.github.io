@@ -131,7 +131,62 @@ text-shadow: 0 0 10px rgba(128, 0, 128, 0.9), 0 0 20px rgba(128, 0, 128, 0.6);
 
 
 
+  .custom-table {
+    margin: 40px auto; /* Center horizontally */
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    min-width: 300px;
+    background: #1a1a2e;
+    color: #fff;
+    box-shadow: 0 0 15px #8a2be2;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .custom-table th, .custom-table td {
+    border: 1px solid #9b30ff;
+    padding: 12px 20px;
+    text-align: center;
+  }
+
+  .custom-table th {
+    background-color: #2e003e;
+    color: #ffccff;
+  }
+
+  .custom-table tr:nth-child(even) {
+    background-color: #2a2a40;
+  }
+
+  .custom-table tr:hover {
+    background-color: #3a004c;
+    color: #fff;
+  }
+
+/* ---------------------------------------- NEON TEXT -------------------------------------------------- */
+
+.neon-text {
+  text-align: center;
+  font-size: 18px;
+  color: #ffccff;
+  font-weight: bold;
+  margin-top: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #1a1a2e;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #8a2be2, 0 0 30px #9b30ff;
+  border: 1px solid #9b30ff;
+  display: inline-block;
+}
 /* ---------------------------------------------------------------------------------------------------- */
+
+.logo-img {
+    width: 100px;
+    height: 100px;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -382,8 +437,7 @@ img {
     <div class="wrapper"> 
 
  <!--  ------------------------------------------------Flex Card 1 --------------------------------------------------------------------- -->
- 
-        <div class="card">
+<div class="card">
            <div class="container">
         <h1>List of People Who Owe Money</h1>
         <input type="text" id="search" placeholder="Search for a name..." style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; font-size: 1em;">
@@ -466,11 +520,76 @@ img {
         </footer>
        </div>
     </div>
-
-
  <!--  ------------------------------------------------Flex Card 2 --------------------------------------------------------------------- -->
+        <div class="card">
+           <div class="container">
+
+                 <h1>Extra record</h1>
+                  <h1>1. Rohit Bank Deposit : </h1> <div class="download-btn"> 2,700 </div> 
+<br>
+<p class="neon-text">Note : Gave 2700 to Ritesh  Cash</p>
+  <table  class="custom-table">
+  <thead>
+    <tr>
+      <th>Name & Type</th>
+      <th>Amount</th>
+      <th>Mode</th>
+      <th>Status</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Hari Sah </td>
+      <td>1000 (IC)</td>
+      <td>Gpay</td>
+      <td>Ritesh Pending</td>
+
+
+    </tr>
+    <tr>
+      <td>Prajwal Panth </td>
+      <td>500 (IC) </td>
+      <td>Gpay</td>
+      <td>Ritesh Pending</td>
+
+    </tr>
+    <tr>
+      <td>Aman Karn </td>
+      <td>1000 (IC) </td>
+      <td>Cash</td>
+      <td>Ritesh Pending</td>
+    </tr>
+
+    <tr>
+      <td>Rohan Pandit </td>
+      <td>200 (IC) </td>
+      <td>****</td>
+      <td>Ritesh Pending</td>
+    </tr>
+
+    <tr>
+      <td>Total  </td>
+      <td>2,700 (IC) </td>
+      <td></td>
+      <td>Ritesh Pending</td>
+    </tr>
+  </tbody>
+</table>
+                  <h1>2. Surya Prakash Shah : </h1> <div class="download-btn"> 260 </div> 
+                  <br>
+                   <p class="neon-text">Note : Ritesh whatsapp Surya  260 ic -> 400 NC Pending </p>
+
+
+             </div>
+        </div>
+ <!--  ------------------------------------------------Flex Card 3 --------------------------------------------------------------------- -->
+
        <div class="card">
-           <div class="container">            <h1>ESEWA DETAILS!</h1>
+           <div class="container">          
+       
+
+         <h1><img src="esewa_logo.png" alt="Description of image" height="100" width="150" style="float: left;"  class="logo-img"> ESEWA DETAILS!</h1>
          <h2>Ritesh Kumar Chauhan</h2>
           <h4>9818837216 || 9818837215</h4>
            <h1> APRIL 2024</h1>
@@ -515,17 +634,14 @@ img {
 
         </div>
 </div>
- <!--  ------------------------------------------------Flex Card 3 --------------------------------------------------------------------- -->
+ <!--  ------------------------------------------------Flex Card 4 --------------------------------------------------------------------- -->
 
         <div class="card">
            <div class="container">
 
-                 <h1>Sample Slide</h1>
-                 <p>Add Slides / Notes / Links</p>
-            
-             </div>
-        </div>
-
+                 <h1>Coinswitch History</h1>
+</div>
+</div>
 <!-- ----------------------------------------------Pop Up--------------------------------------------------------------------------------- -->
     <!-- Popup -->
     <div class="popup">
