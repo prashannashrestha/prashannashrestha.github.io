@@ -18,9 +18,7 @@
             justify-content: center;
             align-items: center;
         }
-
-/* Wrapper should scroll horizontally, but only one card visible at a time */
-/* Wrapper should scroll horizontally, but only one card visible at a time */
+/*  ----------------------------------- Wrapper Class CSS ---------------------------------------------  */
 .wrapper {
     display: flex;
     flex-direction: row;  /* Display cards horizontally */
@@ -33,7 +31,7 @@
     position: relative;
 }
 
-/* Card container for holding each card */
+/*   ----------------------------------- Card Class CSS ---------------------------------------------  */
 .card {
     box-sizing: border-box;
     padding: 20px;
@@ -57,13 +55,14 @@ box-shadow: 0 10px 30px rgba(128, 0, 128, 0.7), 0 0 20px 5px rgba(128, 0, 128, 0
 text-shadow: 0 0 10px rgba(128, 0, 128, 0.9), 0 0 20px rgba(128, 0, 128, 0.6);
 }
 
+/*  ----------------------------------- Container Class CSS ---------------------------------------------  */
 .container {
     box-sizing: border-box;
     margin: 0;
-    max-width: 800px;
-    width: 90%;
+    max-width: 1000px;     /* Important */
+    width: 100%;
     margin: 20px;
-    padding: 12px;
+    padding: 30px;
     background: rgba(255, 255, 255, 0.95);
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -73,13 +72,71 @@ text-shadow: 0 0 10px rgba(128, 0, 128, 0.9), 0 0 20px rgba(128, 0, 128, 0.6);
     height: 100%;  /* Ensure it takes full height */
 }
 
-/* Optional: You can add styles for smooth scrolling */
+/*  ----------------------------------- Download Button ---------------------------------------------  */
+
+
+.download-btn {
+    font-weight: bold;
+    font-size: 16px;
+    padding: 14px 28px;
+    color: #fff;
+    background: #000;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    text-shadow: none;
+    box-shadow: 0 0 12px #8a2be2, 0 0 20px #8a2be2;
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.download-btn::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: conic-gradient(
+        from 0deg,
+        #8a2be2 0deg,
+        #9b30ff 90deg,
+        #8a2be2 180deg,
+        #9b30ff 270deg,
+        #8a2be2 360deg
+    );
+    border-radius: 12px;
+    animation: rotateGlow 2s linear infinite;
+    z-index: -1;
+}
+
+.download-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #8a2be2, 0 0 50px #9b30ff, 0 0 75px #8a2be2;
+}
+
+@keyframes rotateGlow {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+/* ---------------------------------------------------------------------------------------------------- */
 html {
     scroll-behavior: smooth;
 }
 
 
-/* You can set this to maintain scrolling in the wrapper, while cards don't scroll independently. */
    
         /* Header Styles */
         h1 {
@@ -139,6 +196,7 @@ html {
     transition: all 0.3s ease;
 }
 /*---OLD STYLE-----*/
+
 .old_amount{
     font-weight: bold;
     color: #e74c3c;
@@ -149,7 +207,6 @@ html {
     animation: pulse 1.5s ease-in-out infinite;
     transition: all 0.3s ease;
 }
-
 @keyframes pulse {
     0% {
         transform: scale(1);
@@ -311,7 +368,7 @@ html {
 
 
 img {
-    width: 900px; /* Fixed width */
+    width: 10000000px; /* Fixed width */
     max-width: 100%; /* Ensures the image doesn't overflow on smaller screens */
     height: auto; /* Maintains the aspect ratio */
     display: block; /* Removes extra space below the image */
@@ -324,8 +381,8 @@ img {
 
     <div class="wrapper"> 
 
-
-
+ <!--  ------------------------------------------------Flex Card 1 --------------------------------------------------------------------- -->
+ 
         <div class="card">
            <div class="container">
         <h1>List of People Who Owe Money</h1>
@@ -411,51 +468,65 @@ img {
     </div>
 
 
- 
+ <!--  ------------------------------------------------Flex Card 2 --------------------------------------------------------------------- -->
        <div class="card">
            <div class="container">            <h1>ESEWA DETAILS!</h1>
          <h2>Ritesh Kumar Chauhan</h2>
           <h4>9818837216 || 9818837215</h4>
-           <h1> APRIL 2024<h1>
+           <h1> APRIL 2024</h1>
 <img src="esewa_statements/1. APR 4.png" alt="Description of the image" width="500" height="100">
-           <h1> JUNE 2024<h1>
+
+           <h1> JUNE 2024</h1>
 <img src="esewa_statements/2. JUNE 5.png" alt="Description of the image" width="500" height="100">
 <img src="esewa_statements/3. JUNE 29.png" alt="Description of the image" width="500" height="100">
-           <h1> JULY 2024<h1>
+
+           <h1> JULY 2024</h1>
 <img src="esewa_statements/4. JULY 2.png" alt="Description of the image" width="500" height="100">
 <img src="esewa_statements/5. JULY 8.png" alt="Description of the image" width="500" height="100">
 <img src="esewa_statements/6. JULY 8_.png" alt="Description of the image" width="500" height="100">
 
-           <h1> AUG 2024<h1>
+           <h1> AUG 2024</h1>
 <img src="esewa_statements/7. AUG 15.png" alt="Description of the image" width="500" height="100">
 <img src="esewa_statements/8. AUG 25.png" alt="Description of the image" width="500" height="100">
 <img src="esewa_statements/9. AUG 25_.png" alt="Description of the image" width="500" height="100">
 
-           <h1> OCTOBER 2024<h1>
- 
+           <h1> OCTOBER 2024</h1>
 <img src="OCT 17.jpg" alt="Description of the image" width="500" height="100">
 <img src="OCT 18.jpg" alt="Description of the image" width="500" height="100">
 <img src="OCT 29.jpg" alt="Description of the image" width="500" height="100">
 <img src="OCT 29_1.jpg" alt="Description of the image" width="500" height="100">
+
       <span class="old_amount">Total : Rs.38,200 NC</span>
-<a href="eSewa.zip" download>
 <br>
-  <button class="old_amount">Download Statement</button>
+<br>
+<br>
+<a href="1.esewa_9818837215.zip" download>
+  <button class="download-btn">Download Esewa Statements (9818837215)</button>
 </a>
+<br>
+<a href="2.prabhu_statements_2023.zip" download>
+  <button class="download-btn">Download Prabhu Statements (2023)</button>
+</a>
+<br>
+<a href="3.prabhu_statements_2024.zip" download>
+  <button class="download-btn">Download Prabhu Statements (2024)</button>
+</a>
+
+
         </div>
 </div>
-
-
+ <!--  ------------------------------------------------Flex Card 3 --------------------------------------------------------------------- -->
 
         <div class="card">
            <div class="container">
 
-            <h1>Sample Slide</h1>
-            <p>Add Slides / Notes / Links</p>
-              </div>
+                 <h1>Sample Slide</h1>
+                 <p>Add Slides / Notes / Links</p>
+            
+             </div>
         </div>
 
-
+<!-- ----------------------------------------------Pop Up--------------------------------------------------------------------------------- -->
     <!-- Popup -->
     <div class="popup">
         <img id="popup-image" src="" alt="Person Image">
@@ -468,6 +539,8 @@ img {
 
         <button id="close-popup">Close</button>
     </div>
+
+<!-- -----------------------------------------Java Script ----------------------------------------------------------------   -->
 
    <script>
         // Search functionality
@@ -621,5 +694,6 @@ highlightCashText();
         updateElapsedTime(); // Initial call
     </script>
 
+<!-- -----------------------------------------Java Script ----------------------------------------------------------------   -->
 </body>
 </html>
