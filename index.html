@@ -10,14 +10,231 @@
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #6a11cb, #2575fc);
+      /*   background: linear-gradient(to right, #1e003c, #25004f); */
             margin: 0;
             padding: 0;
-            color: #333;
+            color: #fff;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
         }
+/* ---------------- */
+
+.event-summary {
+  max-width: 700px;
+  margin: 40px auto 20px auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #1e003c, #25004f);
+  border-radius: 16px;
+  box-shadow: 0 0 16px rgba(160, 32, 240, 0.6);
+  color: #fff;
+}
+
+.event-summary h2 {
+  text-align: center;
+  font-size: 1.6rem;
+  color: #ffccff;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px #a020f0;
+}
+
+#summary-text {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #a020f0;
+  background: #2a2a3c;
+  color: #fff;
+  font-size: 1rem;
+  resize: vertical;
+  box-shadow: 0 0 6px rgba(160, 32, 240, 0.4);
+}
+/* ---------------- */
+h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #000; /* black text */
+  text-decoration: underline; /* underline added */
+  text-decoration-color: #a020f0; /* purple underline */
+  text-shadow:
+    0 0 5px #a020f0,
+    0 0 10px #a020f0,
+    0 0 20px #a020f0,
+    0 0 40px #a020f0; /* purple glow */
+  margin-bottom: 10px;
+}
+
+/* Style for coinswitch */
+.custom {
+  background: linear-gradient(to right, #1e003c, #25004f) !important;
+  color: white; /* optional, helps text pop on dark bg */
+
+}
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+
+    .user-info img {
+      width: 80px;
+      height: 80px;
+      border-radius: 20%;
+      object-fit: cover;
+      margin-bottom: 10px;
+      border: 3px solid #a64dff;
+    }
+
+    .note {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #ccc;
+      margin-top: 10px;
+      margin-bottom: 30px;
+    }
+    .summary {
+      max-width: 700px;
+      margin: 20px auto 30px auto;
+      padding: 20px;
+      background: linear-gradient(135deg, #291146, #3a1e66);
+      border-radius: 16px;
+      box-shadow: 0 0 16px rgba(173, 102, 255, 0.5);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .summary img {
+      width: 200px;
+      height: 200px;
+      border-radius: 20%;
+      border: 2px solid #00ffcc;
+      object-fit: cover;
+    }
+
+    .summary-text {
+      font-size: 1rem;
+      color: #fff;
+    }
+    .summary-title {
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 6px;
+    }
+
+    .summary-value {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 700px;
+      margin: auto;
+      padding-left: 20px;
+      border-left: 4px solid #a64dff;
+    }
+
+    .transaction-card {
+      background: linear-gradient(135deg, #1f1f2e, #2a2a3c);
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 16px;
+      box-shadow: 0 0 12px rgba(145, 69, 248, 0.5);
+      transition: transform 0.2s ease-in-out;
+      position: relative;
+    }
+
+    .transaction-card::before {
+      content: "";
+      position: absolute;
+      left: -32px;
+      top: 20px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: #a64dff;
+      box-shadow: 0 0 0 4px #1e003c;
+    }
+
+    .transaction-card:hover {
+      transform: scale(1.02);
+    }
+
+    .highlight-ritesh {
+      animation: pulseHighlight 1.5s infinite alternate;
+    }
+
+    @keyframes pulseHighlight {
+      from {
+        box-shadow: 0 0 10px 2px #ff5c5c;
+      }
+      to {
+        box-shadow: 0 0 20px 4px #ff5c5c;
+      }
+    }
+
+    .top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .type {
+      font-size: 1rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status.completed {
+      color: #00ff99;
+      font-size: 0.85rem;
+    }
+
+    .amount {
+      font-size: 1.3rem;
+      font-weight: bold;
+      text-align: right;
+    }
+
+    .datetime {
+      font-size: 0.85rem;
+      color: #aaa;
+      text-align: right;
+    }
+
+    .remarks {
+      margin-top: 12px;
+      font-size: 0.95rem;
+      color: #ccc;
+      border-left: 4px solid #a64dff;
+      padding-left: 10px;
+    }
+
+    .deposit {
+      border-left: 6px solid #00c896;
+    }
+
+    .withdrawal {
+      border-left: 6px solid #ff5c5c;
+    }
+
+    .deposit::before {
+      background-color: #00c896;
+    }
+
+    .withdrawal::before {
+      background-color: #ff5c5c;
+    }
 /*  ----------------------------------- Wrapper Class CSS ---------------------------------------------  */
 .wrapper {
     display: flex;
@@ -34,7 +251,7 @@
 /*   ----------------------------------- Card Class CSS ---------------------------------------------  */
 .card {
     box-sizing: border-box;
-    padding: 20px;
+    padding: 15px;   
     width: 100vw;  /* Each card takes up the full viewport width */
     height: 100vh;  /* Each card takes up the full viewport height */
     background: rgba(255, 255, 255, 0.1);  /* Slightly transparent background for neon effect */
@@ -62,8 +279,26 @@ text-shadow: 0 0 10px rgba(128, 0, 128, 0.9), 0 0 20px rgba(128, 0, 128, 0.6);
     max-width: 1000px;     /* Important */
     width: 100%;
     margin: 20px;
-    padding: 30px;
+    padding: 20px;  /* 30 px */
     background: rgba(255, 255, 255, 0.95);
+
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow-y: auto;  /* Allow vertical scrolling inside the card */
+    height: 100%;  /* Ensure it takes full height */
+}
+
+
+.special_container {
+    box-sizing: border-box;
+    margin: 0;
+    max-width: 1000px;     /* Important */
+    width: 100%;
+    margin: 20px;
+    padding: 20px;  /* 30 px */
+   background: linear-gradient(to right, #1e003c, #25004f) !important;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
@@ -489,7 +724,7 @@ img {
             </li>
 
                     <li data-details="Pankaj Kumar Gupta" data-image="friends/Pankaj.png" data-amount="17,000 INR" data-date="2024-03-04" data-notes="Credit Card , Total : 20,000 ">
-                <span>Pankaj Gupta</span>
+                <span class="name">Pankaj Gupta</span>
                 <span class="red_boxtext">17,000 INR (Old)</span>
                 <div class="countdown">
                     <div><span id="days4">00</span><small>Days</small></div>
@@ -500,7 +735,7 @@ img {
             </li>
 
             <li data-details="Bibek Yadav" data-image="friends/Bibek.png" data-amount="4,900 INR" data-date="2023-08-20" data-notes="Iphone Loan , Total : 5500">
-                <span>Bibek Yadav</span>
+                <span class="name">Bibek Yadav</span>
                 <span class="red_boxtext">4,900 INR (Old)</span>
                 <div class="countdown">
                     <div><span id="days5">00</span><small>Days</small></div>
@@ -511,7 +746,7 @@ img {
             </li>
 
             <li data-details="Avinash Khatri" data-image="https://via.placeholder.com/300" data-amount="2,300 INR" data-date="2023-05-01" data-notes="Forex , Total : 6300   (4000 CASH ME -> ANIKET) + 300 (ANMOL GPAY)">
-                <span>Avinash Khatri</span>
+                <span class="name">Avinash Khatri</span>
                 <span class="red_boxtext">2,000 INR (OLD)</span>
                 <div class="countdown">
                     <div><span id="days6">00</span><small>Days</small></div>
@@ -592,29 +827,39 @@ img {
         </div>
  <!--  ------------------------------------------------Flex Card 3 --------------------------------------------------------------------- -->
   <div class="card">
-  <div class="container">         
+           <div class="special_container">
  
-        <h1><img src="esewa_logo.png" alt="Description of image" height="100" width="150" style="float: left;"  class="logo-img"> ESEWA DETAILS!</h1>
+<div class="custom">
+        <h2><img src="esewa_logo.png" alt="Description of image" height="100" width="150" style="float: left;"  class="logo-img"> ESEWA DETAILS!</h2>
         <h2>Ritesh Kumar Chauhan</h2>  
-        <h4>9818837216 || 9818837215</h4>
-        <h1> APRIL 2024</h1>
+        <h5>9818837216 || 9818837215</h5>
+  <div class="summary">
+    <img src="friends/Ritesh.png" alt="Ritesh">
+
+    <div class="summary-text">
+      <strong>Ritesh</strong> still owes  <span  class="old_amount">NC 38,200 </span> to Prashanna Shrestha.
+  <div class="note">Note: This was sent to Ritesh from Prabhu Bank . Screenshots are attached below.</div>
+
+    </div>
+  </div>
+        <h2>APRIL 2024</h2>
               <img src="esewa_statements/1. APR 4.png" alt="Description of the image" width="500" height="100">
 
-        <h1> JUNE 2024</h1>
+        <h2> JUNE 2024</h2>
                <img src="esewa_statements/2. JUNE 5.png" alt="Description of the image" width="500" height="100">
                <img src="esewa_statements/3. JUNE 29.png" alt="Description of the image" width="500" height="100">
    
-       <h1> JULY 2024</h1>
+       <h2> JULY 2024</h2>
                <img src="esewa_statements/4. JULY 2.png" alt="Description of the image" width="500" height="100">
                <img src="esewa_statements/5. JULY 8.png" alt="Description of the image" width="500" height="100">
                <img src="esewa_statements/6. JULY 8_.png" alt="Description of the image" width="500" height="100">
 
-       <h1> AUG 2024</h1>
+       <h2> AUG 2024</h2>
                <img src="esewa_statements/7. AUG 15.png" alt="Description of the image" width="500" height="100">
                <img src="esewa_statements/8. AUG 25.png" alt="Description of the image" width="500" height="100">
                <img src="esewa_statements/9. AUG 25_.png" alt="Description of the image" width="500" height="100">
 
-        <h1> OCTOBER 2024</h1>
+        <h2> OCTOBER 2024</h2>
                <img src="OCT 17.jpg" alt="Description of the image" width="500" height="100">
                <img src="OCT 18.jpg" alt="Description of the image" width="500" height="100">
                <img src="OCT 29.jpg" alt="Description of the image" width="500" height="100">
@@ -635,6 +880,8 @@ img {
 </a>
 
  </div>
+ </div>
+
 </div>
  <!--  ------------------------------------------------Flex Card 4 --------------------------------------------------------------------- -->
 
@@ -645,6 +892,13 @@ img {
                 
 
                  <h1>9818837215 and 9818837216 2024</h1>
+
+<div class="event-summary">
+  <h2>Summary</h2>
+  <p class="event-text">
+Nigger
+  </p>
+</div>
 
     <h2>📅 April 2024</h2>
     <table class="custom-table">
@@ -721,14 +975,47 @@ img {
  <!--  ------------------------------------------------Flex Card 5 --------------------------------------------------------------------- -->
 
         <div class="card">
-           <div class="container">
+           <div class="special_container">
+ 
+<div class="custom">
 
-                 <h1>Coinswitch History</h1>
 
-               <a href="coinswitch.html">Go to Other Page</a>
+  <h2>Coinswitch History of Prashanna</h2>
 
+ 
+  <div class="note">Note: All withdrawals were made to Airtel Payments Bank of Prashanna (7978998558)</div>
+
+
+  <div class="summary">
+    <img src="friends/Ritesh.png" alt="Ritesh">
+
+    <div class="summary-text">
+      <strong>Ritesh</strong> still owes  <span  class="old_amount">INR 3,10,056</span> to Prashanna Shrestha.
+  <div class="note">Note: This is just Coinswitch Loans. 2nd Semester Fee + 3rd Semester Fee</div>
+
+    </div>
+  </div>
+
+<div class="event-summary">
+  <h2>Summary</h2>
+  <p class="event-text">
+Nigger
+  </p>
+</div>
+
+
+  <div class="timeline" id="historyContainer"></div>
+  <div class="note">Note: Nothing is edited .For proof Login Coinswitch Account (7978998558) OTP ps5470950@gmail.com PIN : 2580</div>
+
+<a href="Coinswitch.jpg" download>
+  <button class="download-btn">Download Coinswitch Transaction</button>
+</a>       
 </div>
 </div>
+</div>
+
+
+
 <!-- ----------------------------------------------Pop Up--------------------------------------------------------------------------------- -->
     <!-- Popup -->
     <div class="popup">
@@ -895,6 +1182,96 @@ highlightCashText();
         // Update elapsed time every second
         setInterval(updateElapsedTime, 1000);
         updateElapsedTime(); // Initial call
+
+/* ----------------------------------- CoinswitchHistory  Script ------------------------------------------------ */
+    const data = [
+      ["23 Feb 24, 09:41 PM", "UPI Deposit", "₹62,500", "3rd Semester Fee Prashanna"],
+      ["23 Feb 24, 09:52 PM", "UPI Deposit", "₹27,000", "3rd Semester Fee Prashanna"],
+      ["25 Feb 24, 03:30 AM", "UPI Deposit", "₹53,000", "3rd Semester Fee Prashanna"],
+      ["27 Feb 24, 06:20 PM", "Withdrawal", "₹1,000", "Prashanna Food"],
+      ["04 Mar 24, 07:42 PM", "Withdrawal", "₹20,000", "Pankaj Loan PENDING"],
+      ["04 Mar 24, 11:57 PM", "Withdrawal", "₹2,000", "Sujit Loan Paid "],
+      ["07 Mar 24, 02:41 PM", "Withdrawal", "₹500", "Prashanna Food"],
+      ["14 Mar 24, 11:26 PM", "Withdrawal", "₹10,000", "Withdraw by Ritesh"],
+      ["16 Mar 24, 02:52 AM", "Withdrawal", "₹10,000", "Withdraw by Ritesh"],
+      ["17 Mar 24, 08:14 PM", "Withdrawal", "₹77,195", "Withdraw by Ritesh"],
+      ["19 Mar 24, 02:23 PM", "UPI Deposit", "₹48,000", "Deposit by Ritesh"],
+      ["23 Mar 24, 02:31 PM", "UPI Deposit", "₹9,000", "Shiv Gave me Loan of 9k"],
+      ["23 Mar 24, 02:33 PM", "UPI Deposit", "₹11,000", "Shiv Gave me Loan of 11k "],
+      ["23 Mar 24, 06:31 PM", "UPI Deposit", "₹15,000", "15k Came from somwhere"],
+      ["26 Mar 24, 11:54 PM", "UPI Deposit", "₹100", "Test transaction"],
+      ["26 Mar 24, 07:41 PM", "Withdrawal", "₹500", "Prashanna Food"],
+      ["29 Mar 24, 02:06 AM", "Withdrawal", "₹5,000", "15k Gone part 1"],
+      ["29 Mar 24, 10:46 PM", "Withdrawal", "₹10,000", "15k Gone part 2"],
+      ["30 Mar 24, 02:23 AM", "Withdrawal", "₹9,000", "Withdraw by Ritesh . (Shiv 9k gave to ritesh STAKE) "],
+      ["30 Mar 24, 09:05 PM", "Withdrawal", "₹500", "Prashanna Food"],
+      ["30 Mar 24, 09:30 PM", "Withdrawal", "₹9,991", "Withdraw 10k by be"],
+      ["02 Apr 24, 04:14 PM", "UPI Deposit", "₹11,000", "Added 1k from GPAY CRICKET GAME and 11k DEPOSITED"],
+      ["02 Apr 24, 09:06 PM", "Withdrawal", "₹500", "Prashanna Food"],
+      ["02 Apr 24, 10:02 PM", "Withdrawal", "₹11,000", "Withdraw by Ritesh . (Shiv 11k gave to ritesh STAKE)"],
+      ["28 Apr 24, 09:42 AM", "Withdrawal", "₹2,500", "Gave Astik Shah (He gave me Cash)"],
+      ["28 Apr 24, 10:17 AM", "Withdrawal", "₹500", "Gave to Astik Shah (He gave me Cash)"],
+      ["29 Apr 24, 07:41 AM", "Withdrawal", "₹5,000", "Ritesh Train Stake "],
+      ["29 Apr 24, 10:22 AM", "UPI Deposit", "₹500", "Astik Cash Deposited"],
+      ["29 Apr 24, 12:06 PM", "UPI Deposit", "₹2,000", "Astik Cash Deposited"],
+      ["29 Apr 24, 05:03 PM", "Withdrawal", "₹11,000", "Ritesh Train Stake"],
+      ["30 Apr 24, 02:33 AM", "Withdrawal", "₹10,000", "Ritesh Stake Train NO PERMISSION"],
+      ["09 May 24, 07:43 PM", "Withdrawal", "₹29,296", "Ritesh Stake BIRGUNJ , NO PERMISSION"],
+      ["11 May 24, 12:36 PM", "Withdrawal", "₹57,983", "HOME : 20,000 IC CASH + 50,000 NC CASH , Ritesh took : 6733"],
+      ["18 May 24, 11:26 AM", "Withdrawal", "₹20,000", "Ritesh NC CONVERT . Gave me 30,000 NC"],
+      ["21 May 24, 11:54 AM", "Withdrawal", "₹20,000", "Ritesh Withdraw "],
+      ["22 May 24, 05:15 PM", "Withdrawal", "₹34,000", "Ritesh Withdraw"],
+      ["22 May 24, 05:54 PM", "Withdrawal", "₹925", "Ritesh Withdraw, He gave me just 25,000 IC "],
+      ["23 May 24, 04:48 PM", "Withdrawal", "₹30,000", "Ritesh , NO PERMISSION"],
+      ["24 May 24, 06:12 PM", "Withdrawal", "₹32,000", "Ritesh , Attached Screenshots. Told his DAD needed money."],
+      ["26 May 24, 10:40 PM", "Withdrawal", "₹15,000", "Ritesh , NO PERMISSION"],
+      ["29 May 24, 02:43 PM", "Withdrawal", "₹8,000", "Withdraw by Ritesh"],
+      ["30 May 24, 08:02 AM", "Withdrawal", "₹15,000", "Withdraw by Ritesh"],
+      ["10 Jun 24, 09:02 PM", "Withdrawal", "₹5,000", "ritesh sold my crypto NO PERMISSION"],
+      ["14 Jun 24, 08:19 PM", "Withdrawal", "₹3,761", "ritesh sold my crypto NO PERMISSION"],
+      ["14 Jun 24, 10:21 PM", "Withdrawal", "₹5,231", "ritesh sold my crypto NO PERMISSION"],
+      ["16 Jun 24, 03:55 PM", "Withdrawal", "₹5,980", "ritesh sold my crypto NO PERMISSION"],
+      ["16 Jun 24, 04:13 PM", "Withdrawal", "₹10,822", "ritesh sold my crypto NO PERMISSION"],
+      ["16 Jun 24, 04:50 PM", "Withdrawal", "₹10,863", "ritesh sold my crypto NO PERMISSION"]
+    ];
+
+    const container = document.getElementById("historyContainer");
+    let totalDeposited = 0, totalWithdrawn = 0;
+
+    data.forEach(([datetime, type, amountStr, remark]) => {
+      const amount = parseFloat(amountStr.replace(/[₹,]/g, ""));
+      const isDeposit = type.includes("Deposit");
+
+      if (isDeposit) totalDeposited += amount;
+      else totalWithdrawn += amount;
+
+      const card = document.createElement("div");
+      const cardClass = isDeposit ? "deposit" : "withdrawal";
+      const icon = isDeposit ? "💰" : "💸";
+      const highlight = remark.toLowerCase().includes("ritesh") ? "highlight-ritesh" : "";
+
+      card.className = `transaction-card ${cardClass} ${highlight}`;
+      card.innerHTML = `
+        <div class="top-row">
+          <div>
+            <div class="type">${icon} ${type}</div>
+            <div class="status completed">Completed</div>
+          </div>
+          <div>
+            <div class="amount">${amountStr}</div>
+            <div class="datetime">${datetime}</div>
+          </div>
+        </div>
+        <div class="remarks">${remark}</div>
+      `;
+      container.appendChild(card);
+    });
+
+    const format = n => `₹${n.toLocaleString("en-IN")}`;
+    document.getElementById("totalDeposited").textContent = format(totalDeposited);
+    document.getElementById("totalWithdrawn").textContent = format(totalWithdrawn);
+    document.getElementById("balance").textContent = format(totalDeposited - totalWithdrawn);   
+
     </script>
 
 <!-- -----------------------------------------Java Script ----------------------------------------------------------------   -->
