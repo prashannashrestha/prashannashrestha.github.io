@@ -19,7 +19,90 @@
             justify-content: center;
             align-items: center;
         }
-/* ---------------- */
+/* ----------------------------------------------   FLEX CARD 3 : --------------------------------------------------------- */
+/* --------------------------   PRABHU BANK IMAGES STATEMENT Month , Gallery and Item ------------------------------------- */
+
+    /* Statement Gallery */
+    .statement-gallery {
+        display: flex;
+        flex-direction: column;
+
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        margin: 30px 0;
+    }
+
+    .statement-item {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .statement-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(138, 43, 226, 0.4);
+    }
+
+    .statement-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .statement-month {
+        text-align: center;
+        margin: 30px 0 10px;
+        font-size: 1.8rem;
+        color: var(--accent-success);
+        position: relative;
+    }
+
+    .statement-month:after {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 3px;
+        background: var(--accent-success);
+        margin: 10px auto;
+        border-radius: 3px;
+    }
+
+/* --------------------------------------------  PRABHU BANK PROGRESS BAR ------------------------------------------------------ */
+    /* Progress Indicator */
+    .progress-container {
+        width: 100%;
+        max-width: 500px;
+        margin: 20px auto;
+    }
+
+    .progress-text {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+        font-size: 0.9rem;
+    }
+
+    .progress-bar {
+        height: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent-success), var(--accent-info));
+        border-radius: 5px;
+        transition: width 0.5s ease;
+    }
+
+/* ------    FLEX CARD 3 :  PRABHU BANK IMAGES STATEMENT Month , Gallery and Item ---------- */
+
+
 
 .event-summary {
   max-width: 700px;
@@ -120,6 +203,7 @@ h2 {
   background-color: #ccc;
   border-radius: 50%;
 }
+
 
     .summary {
       max-width: 700px;
@@ -855,7 +939,10 @@ img {
  
 <div class="custom">
         <h2><img src="esewa_logo.png" alt="Description of image" height="100" width="150" style="float: left;"  class="logo-img"> PrabhuBank Details!</h2>
-  <div class="note">Note: Money was sent from Prabhu Bank to Ritesh's Esewa </div>
+
+            <div class="note">
+                <i class="fas fa-info-circle"></i> Money was sent from Prabhu Bank to Ritesh's Esewa account
+            </div>
 
         <h2>Ritesh Kumar Chauhan</h2>  
         <h5>E-Sewa Number : 9818837216 || 9818837215</h5>
@@ -874,29 +961,86 @@ img {
 
     </div>
   </div>
-        <h2>APRIL 2024</h2>
-              <img src="esewa_statements/1. APR 4.png" alt="Description of the image" width="500" height="100">
 
-        <h2> JUNE 2024</h2>
-               <img src="esewa_statements/2. JUNE 5.png" alt="Description of the image" width="500" height="100">
-               <img src="esewa_statements/3. JUNE 29.png" alt="Description of the image" width="500" height="100">
-   
-       <h2> JULY 2024</h2>
-               <img src="esewa_statements/4. JULY 2.png" alt="Description of the image" width="500" height="100">
-               <img src="esewa_statements/5. JULY 8.png" alt="Description of the image" width="500" height="100">
-               <img src="esewa_statements/6. JULY 8_.png" alt="Description of the image" width="500" height="100">
+            <div class="progress-container">
+                <div class="progress-text">
+                    <span>Amount Recovered: Rs. 0</span>
+                    <span>Total: Rs. 62,200</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
 
-       <h2> AUG 2024</h2>
-               <img src="esewa_statements/7. AUG 15.png" alt="Description of the image" width="500" height="100">
-               <img src="esewa_statements/8. AUG 25.png" alt="Description of the image" width="500" height="100">
-               <img src="esewa_statements/9. AUG 25_.png" alt="Description of the image" width="500" height="100">
 
-        <h2> OCTOBER 2024</h2>
-               <img src="OCT 17.jpg" alt="Description of the image" width="500" height="100">
-               <img src="OCT 18.jpg" alt="Description of the image" width="500" height="100">
-        <h2> Cyclone Holiday (23 Oct to 5 November) </h2>
-               <img src="OCT 29.jpg" alt="Description of the image" width="500" height="100">
-               <img src="OCT 29_1.jpg" alt="Description of the image" width="500" height="100">
+<!-- April 2024 -->
+            <h3 class="statement-month">APRIL 2024</h3>
+            <div class="statement-gallery">
+                <div class="statement-item">
+                    <img src="esewa_statements/1. APR 4.png" alt="April 4 Statement">
+                </div>
+            </div>
+
+            <!-- June 2024 -->
+            <h3 class="statement-month">JUNE 2024</h3>
+            <div class="statement-gallery">
+                <div class="statement-item">
+                    <img src="esewa_statements/2. JUNE 5.png" alt="June 5 Statement">
+                </div>
+                <div class="statement-item">
+                    <img src="esewa_statements/3. JUNE 29.png" alt="June 29 Statement">
+                </div>
+            </div>
+
+            <!-- July 2024 -->
+            <h3 class="statement-month">JULY 2024</h3>
+            <div class="statement-gallery">
+                <div class="statement-item">
+                    <img src="esewa_statements/4. JULY 2.png" alt="July 2 Statement">
+                </div>
+                <div class="statement-item">
+                    <img src="esewa_statements/5. JULY 8.png" alt="July 8 Statement">
+                </div>
+                <div class="statement-item">
+                    <img src="esewa_statements/6. JULY 8_.png" alt="July 8 Additional Statement">
+                </div>
+            </div>
+
+            <!-- August 2024 -->
+            <h3 class="statement-month">AUGUST 2024</h3>
+            <div class="statement-gallery">
+                <div class="statement-item">
+                    <img src="esewa_statements/7. AUG 15.png" alt="August 15 Statement">
+                </div>
+                <div class="statement-item">
+                    <img src="esewa_statements/8. AUG 25.png" alt="August 25 Statement">
+                </div>
+                <div class="statement-item">
+                    <img src="esewa_statements/9. AUG 25_.png" alt="August 25 Additional Statement">
+                </div>
+            </div>
+
+            <!-- October 2024 -->
+            <h3 class="statement-month">OCTOBER 2024</h3>
+            <div class="statement-gallery">
+                <div class="statement-item">
+                    <img src="OCT 17.jpg" alt="October 17 Statement">
+                </div>
+                <div class="statement-item">
+                    <img src="OCT 18.jpg" alt="October 18 Statement">
+                </div>
+            </div>
+
+            <h3 class="statement-month">CYCLONE HOLIDAY (23 Oct - 5 Nov)</h3>
+            <div class="statement-gallery">
+                <div class="statement-item">
+                    <img src="OCT 29.jpg" alt="October 29 Statement">
+                </div>
+                <div class="statement-item">
+                    <img src="OCT 29_1.jpg" alt="October 29 Additional Statement">
+                </div>
+            </div>
+
         <h2>Oct 30 (Night Home) -> Piggybank : 9,000 NC CASH </h2>
       <span class="old_amount">Total : Rs.38,200 NC</span>
         <h2> DECEMBER 2024</h2>
