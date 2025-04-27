@@ -1,0 +1,175 @@
+       
+ /*---------------------- Name Class (Black , Pulse , Bold )---------------------------------------------- */
+/* Names of Person */
+.name {
+    font-weight: bold;
+    color: #000000;
+    font-size: 1.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    display: inline-block;
+    animation: pulse 1.5s ease-in-out infinite;
+    transition: all 0.3s ease;
+}
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* ------------------------------ Red Text with Box ------------------------------------------------ */
+.red_boxtext {
+    font-weight: bold;
+    color: #e74c3c;
+    font-size: 1.2em;
+    border: 2px solid #e74c3c;  /* Added border */
+    padding: 5px;               /* Added padding for spacing */
+    border-radius: 4px;         /* Slightly rounded corners */
+}
+
+ /* Countdown Timer Styles */
+     
+        .countdown {
+            display: flex;
+            gap: 10px;
+            margin-left: 10px;
+        }
+
+        .countdown div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #3498db;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            perspective: 1000px;
+        }
+
+        .countdown div small {
+            font-size: 0.8em;
+            color: #ddd;
+        }
+
+
+  /* List Styles */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background: #fff;
+            margin: 15px 0;
+            padding: 20px;
+            border-left: 5px solid #3498db;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            position: relative;
+        }
+
+        li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+            li {
+                flex-direction: column;
+                text-align: center;
+            }
+            .amount {
+                margin-top: 10px;
+            }
+            .popup {
+                width: 90%;
+                right: 5%;
+            }
+        }
+
+
+        /* Total Sum Styles */
+        #total-sum {
+            text-align: right;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #2c3e50;
+        }
+
+        /* Popup Styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            width: 300px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            animation: slideIn 0.3s ease;
+        }
+
+        .popup.active {
+            display: block;
+        }
+
+        .popup img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .popup h3 {
+            margin: 0 0 10px;
+            font-size: 1.5em;
+            color: #2c3e50;
+        }
+
+        .popup p {
+            margin: 5px 0;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .popup button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }

@@ -1,0 +1,54 @@
+
+.download-btn {
+    font-weight: bold;
+    font-size: 16px;
+    padding: 14px 28px;
+    color: #fff;
+    background: #000;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    text-shadow: none;
+    box-shadow: 0 0 12px #8a2be2, 0 0 20px #8a2be2;
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.download-btn::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: conic-gradient(
+        from 0deg,
+        #8a2be2 0deg,
+        #9b30ff 90deg,
+        #8a2be2 180deg,
+        #9b30ff 270deg,
+        #8a2be2 360deg
+    );
+    border-radius: 12px;
+    animation: rotateGlow 2s linear infinite;
+    z-index: -1;
+}
+
+.download-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #8a2be2, 0 0 50px #9b30ff, 0 0 75px #8a2be2;
+}
+
+@keyframes rotateGlow {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
