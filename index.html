@@ -6,118 +6,75 @@
     <title>List of People Who Owe Money</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💰</text></svg>">
     <style>
-        /* General Styles */
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-      /*   background: linear-gradient(to right, #1e003c, #25004f); */
-            margin: 0;
-            padding: 0;
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-/* ----------------------------------------------   FLEX CARD 3 : --------------------------------------------------------- */
-/* --------------------------   PRABHU BANK IMAGES STATEMENT Month , Gallery and Item ------------------------------------- */
 
-    /* Statement Gallery */
-.statement-gallery {
-  display: flex;
-  flex-direction: column;
 
-  /* Removed grid-template-columns since flexbox is used */
-  gap: 20px;
-  margin: 30px auto;
-  padding: 30px;
-
-  border: 2px solid rgba(255, 255, 255, 0.15);
-  border-radius: 10px;
-
-  background-color: rgba(255, 255, 255, 0.05); /* semi-transparent */
-  backdrop-filter: blur(10px); /* blur for glass effect */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
-
-  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.6),
-              inset -2px -2px 5px rgba(255, 255, 255, 0.05),
-              0 4px 30px rgba(0, 0, 0, 0.4); /* added outer glow for depth */
-
-  width: fit-content;
+/* --------------------- General Styles --------------------------- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    /* background: linear-gradient(to right, #1e003c, #25004f); */
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* -------------------- Wrapper Class CSS -------------------------  */
+.wrapper {
+    display: flex;
+    flex-direction: row;  /* Display cards horizontally */
+    gap: 0;
+    width: 100vw;  /* Wrapper takes full screen width */
+    height: 100vh;  /* Wrapper takes full screen height */
+    overflow-x: auto;  /* Allow horizontal scrolling */
+    overflow-y: hidden;  /* Prevent vertical scrolling inside the wrapper */
+    scroll-snap-type: x mandatory;  /* Ensure the cards snap to the start */
+    position: relative;
 }
 
+/* --------------------- Card Class CSS ------------------------------  */
+.card {
+    box-sizing: border-box;
+    padding: 15px;   
+    width: 100vw;  /* Each card takes up the full viewport width */
+    height: 100vh;  /* Each card takes up the full viewport height */
+    background: rgba(255, 255, 255, 0.1);  /* Slightly transparent background for neon effect */
+    border-radius: 15px;
+box-shadow: 0 10px 30px rgba(128, 0, 128, 0.7), 0 0 20px 5px rgba(128, 0, 128, 0.7);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    scroll-snap-align: start;  /* Make sure each card snaps to the start */
+    flex-shrink: 0;  /* Prevent the cards from shrinking */
+    border: 2px solid rgba(0, 255, 255, 0.5); /* Neon border effect */
+}
 
-    .statement-item {
-        background: white;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s ease;
-        position: relative;
-    }
+.card h1, .card p {
+text-shadow: 0 0 10px rgba(128, 0, 128, 0.9), 0 0 20px rgba(128, 0, 128, 0.6);
+}
 
-    .statement-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(138, 43, 226, 0.4);
-    }
+/*  ---------------------- Container Class CSS ---------------------------  */
+.container {
+    box-sizing: border-box;
+    margin: 0;
+    max-width: 1000px;     /* Important */
+    width: 100%;
+    margin: 20px;
+    padding: 20px;  /* 30 px */
+    background: rgba(255, 255, 255, 0.95);
 
-    .statement-item img {
-        width: 100%;
-        height: auto;
-        display: block;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .statement-month {
-        text-align: center;
-        margin: 30px 0 10px;
-        font-size: 1.8rem;
-        color: var(--accent-success);
-        position: relative;
-    }
-
-    .statement-month:after {
-        content: '';
-        display: block;
-        width: 100px;
-        height: 3px;
-        background: var(--accent-success);
-        margin: 10px auto;
-        border-radius: 3px;
-    }
-
-/* --------------------------------------------  PRABHU BANK PROGRESS BAR ------------------------------------------------------ */
-    /* Progress Indicator */
-    .progress-container {
-        width: 100%;
-        max-width: 500px;
-        margin: 20px auto;
-    }
-
-    .progress-text {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 5px;
-        font-size: 0.9rem;
-    }
-
-    .progress-bar {
-        height: 10px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 5px;
-        overflow: hidden;
-    }
-
-    .progress-fill {
-        height: 100%;
-        background: linear-gradient(90deg, var(--accent-success), var(--accent-info));
-        border-radius: 5px;
-        transition: width 0.5s ease;
-    }
-
-/* ------    FLEX CARD 3 :  PRABHU BANK IMAGES STATEMENT Month , Gallery and Item ---------- */
-
-
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow-y: auto;  /* Allow vertical scrolling inside the card */
+    height: 100%;  /* Ensure it takes full height */
+}
 
 .event-summary {
   max-width: 700px;
@@ -163,276 +120,9 @@ h2 {
   margin-bottom: 10px;
 }
 
-/* Style for coinswitch */
-.custom {
-  background: linear-gradient(to right, #1e003c, #25004f) !important;
-  color: white; /* optional, helps text pop on dark bg */
-
-}
-
-    .user-info {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
 
 
-    .user-info img {
-      width: 80px;
-      height: 80px;
-      border-radius: 20%;
-      object-fit: cover;
-      margin-bottom: 10px;
-      border: 3px solid #a64dff;
-    }
-
-    .note {
-      text-align: center;
-      font-size: 0.9rem;
-      color: #ccc;
-      margin-top: 10px;
-      margin-bottom: 30px;
-    }
-
-
-.remarks {
-  text-align: center;
-  font-size: 0.9rem;
-  color: #ccc;
-  padding: 10px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.05); /* semi-transparent white for glossy effect */
-  backdrop-filter: blur(10px); /* blur for glass effect */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
-  text-shadow: 1px 1px 1px #000, -1px -1px 1px #333;
-  width: fit-content;
-  margin: 10px auto;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* subtle shadow for depth */
-}
-
-
-
-
-
-.note_1 {
-  position: relative;
-  text-align: left;
-  font-size: 0.9rem;
-  color: #888;
-  margin: 20px 0;
-  padding-left: 25px;
-  border-left: 2px solid #ccc;
-}
-
-.note_1::before {
-  content: '';
-  position: absolute;
-  left: -6px;
-  top: 5px;
-  width: 12px;
-  height: 12px;
-  background-color: #ccc;
-  border-radius: 50%;
-}
-
-
-    .summary {
-      max-width: 700px;
-      margin: 20px auto 30px auto;
-      padding: 20px;
-      background: linear-gradient(135deg, #291146, #3a1e66);
-      border-radius: 16px;
-      box-shadow: 0 0 16px rgba(173, 102, 255, 0.5);
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .summary img {
-      width: 200px;
-      height: 200px;
-      border-radius: 20%;
-      border: 2px solid #00ffcc;
-      object-fit: cover;
-    }
-
-    .summary-text {
-      font-size: 1rem;
-      color: #fff;
-    }
-    .summary-title {
-      font-size: 1rem;
-      color: #ccc;
-      margin-bottom: 6px;
-    }
-
-    .summary-value {
-      font-size: 1.4rem;
-      font-weight: bold;
-      color: #fff;
-    }
-
-    .timeline {
-      position: relative;
-      max-width: 700px;
-      margin: auto;
-      padding-left: 20px;
-      border-left: 4px solid #a64dff;
-    }
-
-    .transaction-card {
-      background: linear-gradient(135deg, #1f1f2e, #2a2a3c);
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 16px;
-      box-shadow: 0 0 12px rgba(145, 69, 248, 0.5);
-      transition: transform 0.2s ease-in-out;
-      position: relative;
-    }
-
-    .transaction-card::before {
-      content: "";
-      position: absolute;
-      left: -32px;
-      top: 20px;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background-color: #a64dff;
-      box-shadow: 0 0 0 4px #1e003c;
-    }
-
-    .transaction-card:hover {
-      transform: scale(1.02);
-    }
-
-    .highlight-ritesh {
-      animation: pulseHighlight 1.5s infinite alternate;
-    }
-
-    @keyframes pulseHighlight {
-      from {
-        box-shadow: 0 0 10px 2px #ff5c5c;
-      }
-      to {
-        box-shadow: 0 0 20px 4px #ff5c5c;
-      }
-    }
-
-    .top-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-
-    .type {
-      font-size: 1rem;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .status.completed {
-      color: #00ff99;
-      font-size: 0.85rem;
-    }
-
-    .amount {
-      font-size: 1.3rem;
-      font-weight: bold;
-      text-align: right;
-    }
-
-    .datetime {
-      font-size: 0.85rem;
-      color: #aaa;
-      text-align: right;
-    }
-
-    .remarks {
-      margin-top: 12px;
-      font-size: 0.95rem;
-      color: #ccc;
-      border-left: 4px solid #a64dff;
-      padding-left: 10px;
-    }
-
-    .deposit {
-      border-left: 6px solid #00c896;
-    }
-
-    .withdrawal {
-      border-left: 6px solid #ff5c5c;
-    }
-
-    .deposit::before {
-      background-color: #00c896;
-    }
-
-    .withdrawal::before {
-      background-color: #ff5c5c;
-    }
-/*  ----------------------------------- Wrapper Class CSS ---------------------------------------------  */
-.wrapper {
-    display: flex;
-    flex-direction: row;  /* Display cards horizontally */
-    gap: 0;
-    width: 100vw;  /* Wrapper takes full screen width */
-    height: 100vh;  /* Wrapper takes full screen height */
-    overflow-x: auto;  /* Allow horizontal scrolling */
-    overflow-y: hidden;  /* Prevent vertical scrolling inside the wrapper */
-    scroll-snap-type: x mandatory;  /* Ensure the cards snap to the start */
-    position: relative;
-}
-
-/*   ----------------------------------- Card Class CSS ---------------------------------------------  */
-.card {
-    box-sizing: border-box;
-    padding: 15px;   
-    width: 100vw;  /* Each card takes up the full viewport width */
-    height: 100vh;  /* Each card takes up the full viewport height */
-    background: rgba(255, 255, 255, 0.1);  /* Slightly transparent background for neon effect */
-    border-radius: 15px;
-box-shadow: 0 10px 30px rgba(128, 0, 128, 0.7), 0 0 20px 5px rgba(128, 0, 128, 0.7);
-    backdrop-filter: blur(10px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    scroll-snap-align: start;  /* Make sure each card snaps to the start */
-    flex-shrink: 0;  /* Prevent the cards from shrinking */
-    border: 2px solid rgba(0, 255, 255, 0.5); /* Neon border effect */
-}
-
-.card h1, .card p {
-text-shadow: 0 0 10px rgba(128, 0, 128, 0.9), 0 0 20px rgba(128, 0, 128, 0.6);
-}
-
-/*  ----------------------------------- Container Class CSS ---------------------------------------------  */
-.container {
-    box-sizing: border-box;
-    margin: 0;
-    max-width: 1000px;     /* Important */
-    width: 100%;
-    margin: 20px;
-    padding: 20px;  /* 30 px */
-    background: rgba(255, 255, 255, 0.95);
-
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
-    position: relative;
-    overflow-y: auto;  /* Allow vertical scrolling inside the card */
-    height: 100%;  /* Ensure it takes full height */
-}
-
-
+/*Used by flex 5 and flex 3*/
 .special_container {
     box-sizing: border-box;
     margin: 0;
@@ -448,65 +138,6 @@ text-shadow: 0 0 10px rgba(128, 0, 128, 0.9), 0 0 20px rgba(128, 0, 128, 0.6);
     overflow-y: auto;  /* Allow vertical scrolling inside the card */
     height: 100%;  /* Ensure it takes full height */
 }
-
-/*  ----------------------------------- Download Button ---------------------------------------------  */
-
-
-.download-btn {
-    font-weight: bold;
-    font-size: 16px;
-    padding: 14px 28px;
-    color: #fff;
-    background: #000;
-    border: 2px solid transparent;
-    border-radius: 10px;
-    text-shadow: none;
-    box-shadow: 0 0 12px #8a2be2, 0 0 20px #8a2be2;
-    position: relative;
-    cursor: pointer;
-    z-index: 1;
-    overflow: hidden;
-    display: inline-block;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.download-btn::before {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    background: conic-gradient(
-        from 0deg,
-        #8a2be2 0deg,
-        #9b30ff 90deg,
-        #8a2be2 180deg,
-        #9b30ff 270deg,
-        #8a2be2 360deg
-    );
-    border-radius: 12px;
-    animation: rotateGlow 2s linear infinite;
-    z-index: -1;
-}
-
-.download-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px #8a2be2, 0 0 50px #9b30ff, 0 0 75px #8a2be2;
-}
-
-@keyframes rotateGlow {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-
-
 
   .custom-table {
     margin: 40px auto; /* Center horizontally */
@@ -569,41 +200,7 @@ html {
 }
 
 
-   
-        /* Header Styles */
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        /* List Styles */
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            background: #fff;
-            margin: 15px 0;
-            padding: 20px;
-            border-left: 5px solid #3498db;
-            border-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            position: relative;
-        }
-
-        li:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
+      
 /* --------------------------------  Red Text Bold ------------------------------------------------- */
 .red_text {
     color: #e74c3c;
@@ -612,42 +209,7 @@ html {
 
 }
 
-/* ------------------------------ Red Text with Box ------------------------------------------------ */
-.red_boxtext {
-    font-weight: bold;
-    color: #e74c3c;
-    font-size: 1.2em;
-    border: 2px solid #e74c3c;  /* Added border */
-    padding: 5px;               /* Added padding for spacing */
-    border-radius: 4px;         /* Slightly rounded corners */
-}
 
-       
-
- /*---------------------- Name Class (Black , Pulse , Bold )---------------------------------------------- */
-/* Names of Person */
-.name {
-    font-weight: bold;
-    color: #000000;
-    font-size: 1.5em;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    position: relative;
-    display: inline-block;
-    animation: pulse 1.5s ease-in-out infinite;
-    transition: all 0.3s ease;
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
 
 /* ------------------------------------------------------------------------------------------------------------- */
 /*---OLD STYLE-----*/
@@ -686,89 +248,8 @@ html {
 
 
 
-        /* Countdown Timer Styles */
 
-     
-        .countdown {
-            display: flex;
-            gap: 10px;
-            margin-left: 10px;
-        }
 
-        .countdown div {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: #3498db;
-            color: #fff;
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            perspective: 1000px;
-        }
-
-        .countdown div small {
-            font-size: 0.8em;
-            color: #ddd;
-        }
-
-        /* Total Sum Styles */
-        #total-sum {
-            text-align: right;
-            font-size: 1.5em;
-            font-weight: bold;
-            margin-top: 20px;
-            color: #2c3e50;
-        }
-
-        /* Popup Styles */
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-            width: 300px;
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-            backdrop-filter: blur(5px);
-            animation: slideIn 0.3s ease;
-        }
-
-        .popup.active {
-            display: block;
-        }
-
-        .popup img {
-            width: 100%;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
-
-        .popup h3 {
-            margin: 0 0 10px;
-            font-size: 1.5em;
-            color: #2c3e50;
-        }
-
-        .popup p {
-            margin: 5px 0;
-            font-size: 0.9em;
-            color: #555;
-        }
-
-        .popup button {
-            margin-top: 10px;
-            padding: 5px 10px;
-            background: #e74c3c;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
 
         /* Footer Styles */
         footer {
@@ -777,25 +258,6 @@ html {
             font-size: 0.9em;
             color: #777;
         }
-
-        /* Responsive Design */
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2em;
-            }
-            li {
-                flex-direction: column;
-                text-align: center;
-            }
-            .amount {
-                margin-top: 10px;
-            }
-            .popup {
-                width: 90%;
-                right: 5%;
-            }
-        }
-
         /* Animations */
         @keyframes slideIn {
             from { opacity: 0; transform: translateY(-50%) translateX(20px); }
@@ -816,6 +278,11 @@ img {
 }
 
     </style>
+<link rel="stylesheet" href="css/flex1.css"> <!--  Pop-Up and Countdown -->
+<link rel="stylesheet" href="css/flex3.css"> <!-- Prabhu Gallery,Item -->
+<link rel="stylesheet" href="css/flex5.css"> <!-- Coinswitch -->
+<link rel="stylesheet" href="css/DownloadButton.css"> 
+
 </head>
 <body>
 
@@ -1140,13 +607,13 @@ Ritesh had 5000 Initially.<br>
           <h2> DEC 20 (Night Home) -> ABC TRIP : 15,000 NC CASH</h2>
       <br> <br> <br>
 
-<a href="1.esewa_9818837215.zip" download>
+<a href="Downloadables/1.esewa_9818837215.zip" download>
   <button class="download-btn">Download Esewa Statements (9818837215)</button>
 </a>                              <br>
-<a href="2.prabhu_statements_2023.zip" download>
+<a href="Downloadables/2.prabhu_statements_2023.zip" download>
   <button class="download-btn">Download Prabhu Statements (2023)</button>
 </a>                              <br>
-<a href="3.prabhu_statements_2024.zip" download>
+<a href="Downloadables/3.prabhu_statements_2024.zip" download>
   <button class="download-btn">Download Prabhu Statements (2024)</button>
 </a>
 
@@ -1285,18 +752,18 @@ Nigger
   <div class="timeline" id="historyContainer"></div>
   <div class="note">Note: Nothing is edited .For proof Login Coinswitch Account (7978998558) OTP ps5470950@gmail.com PIN : 2580</div>
 
-<a href="Coinswitch.jpg" download>
+<a href="Downloadables/Coinswitch.jpg" download>
   <button class="download-btn">Download Coinswitch Transaction</button>
 </a>    
 
 <br>
 
-<a href="Airtelpaymentbank.pdf" download>
+<a href="Downloadables/Airtelpaymentbank.pdf" download>
   <button class="download-btn">Download Airtel Payment Bank Transaction</button>
 </a>          
 <br>
 
-<a href="CryptoChat.zip" download>
+<a href="Downloadables/CryptoChat.zip" download>
   <button class="download-btn">Download Chats</button>
 </a>    
 </div>
