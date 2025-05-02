@@ -74,13 +74,21 @@
         });
 
         closePopup.addEventListener('click', () => {
-            popup.classList.remove('active');
+            popup.classList.add('closing');
+            setTimeout(() => {
+                popup.classList.remove('active', 'closing');
+            }, 400); // match the animation duration
+            
         });
 
         // Close popup when clicking outside
         document.addEventListener('click', (event) => {
             if (!event.target.closest('li') && !event.target.closest('.popup')) {
-                popup.classList.remove('active');
+            popup.classList.add('closing');
+            setTimeout(() => {
+                popup.classList.remove('active', 'closing');
+            }, 400); // match the animation duration
+            
             }
         });
 
