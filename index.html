@@ -6,8 +6,127 @@
     <title>List of People Who Owe Money</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💰</text></svg>">
     <style>
+.download-audio-btn {
+  padding: 10px 16px;
+  background-color: #6a11cb;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #a020f0;
+  transition: background-color 0.3s ease;
+}
+
+.download-audio-btn:hover {
+  background-color: #2575fc;
+}
+.audio-container {
+  background: #1a1a2e;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #a020f0;
+  margin-top: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.expand-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 12px #a020f0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  object-fit: cover;
+  max-width: 100%;
+}
+
+.expand-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 18px #ff66cc;
+}
 
 
+.audio-label {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #ffccff;
+  font-size: 1rem;
+  text-shadow: 0 0 8px #a020f0;
+}
+
+.audio-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.audio-flex audio {
+  width: 300px;
+  max-width: 80vw;
+}
+
+
+.image-gallery {
+  display: grid;
+  gap: 12px;
+  margin-top: 15px;
+  padding: 0 10px;
+  justify-content: center;
+}
+
+/* Force 2 images per row on phones */
+@media (max-width: 600px) {
+  .image-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Adaptive layout for tablets and up */
+@media (min-width: 601px) {
+  .image-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+}
+
+#lightbox-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.9);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+#lightbox-overlay img {
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #fff;
+}
+
+#lightbox-overlay:after {
+  content: "✖";
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+}
 /* --------------------- General Styles --------------------------- */
 body {
     font-family: 'Poppins', sans-serif;
@@ -514,11 +633,23 @@ Ritesh had 5000 Initially.<br>
 <!-- April 2024 -->
             <h3 class="statement-month">APRIL 2024</h3>
             <div class="statement-gallery">
-                <div class="statement-item">
+                                <div class="statement-item" onclick="toggleAudio(this)">
                     <img src="esewa_statements/1. APR 4.png" alt="April 4 Statement">
-                </div>
+              
+              <div class="audio-container" style="display: none; margin-top: 10px;">
+                          <div class="audio-label">🎧 Audio: june_5_townhall.mp3   <a href="audio/20240603 224026.m4a Priya Gupta.zip" download class="download-audio-btn">⬇️ </a></div>
+                 <audio controls >
+                    <source src="audio/20240603 224026.m4a Priya Gupta.m4a" type="audio/mpeg">
+                         Your browser does not support the audio element.
+                 </audio>
+  <div class="image-gallery">
+    <img src="images/Screenshot_20240404_020859.jpg" alt="Receipt 1" class="expand-img">
+    <img src="images/Screenshot_20240405_014726.jpg" alt="Receipt 2" class="expand-img">
+  </div>
+                 <br>
+              </div>
 
-
+  </div>
    <div class="remarks">Remarks : Sent to Abhinav Aman (Aman Loan Ritesh) </div>
 
 
@@ -527,13 +658,103 @@ Ritesh had 5000 Initially.<br>
             <!-- June 2024 -->
             <h3 class="statement-month">JUNE 2024</h3>
             <div class="statement-gallery">
-                <div class="statement-item">
+                                <div class="statement-item" onclick="toggleAudio(this)">
                     <img src="esewa_statements/2. JUNE 5.png" alt="June 5 Statement">
+<div class="audio-container" style="display: none; margin-top: 10px;">
+                          <div class="audio-label">🎧 Audio: June 5 1:31 AM Prashanna (Ritesh Asking Money)</div>
+                 <audio controls >
+                    <source src="audio/June_5_Prashanna_Money_Ask/prashanna home landline 2024-06-05 01-31-35.m4a" type="audio/mpeg">
+                         Your browser does not support the audio element.
+                 </audio>
+  <div class="note">Note: Ritesh asking for money at night 1:31 AM</div>
+
+  <div class="image-gallery">
+    <img src="images/" alt="Receipt 1" class="expand-img">
+    <img src="images/" alt="Receipt 2" class="expand-img">
+  </div>
+                 <br>
+              </div>
                 </div>
    <div class="remarks">Remarks : Sent to Rajesh Kumar Bose (Townhall Hotel)	 </div>
 
-                <div class="statement-item">
+                                <div class="statement-item" onclick="toggleAudio(this)">
                     <img src="esewa_statements/3. JUNE 29.png" alt="June 29 Statement">
+<div class="audio-container" style="display: none; margin-top: 10px;">
+
+<div class="audio-label">🎧 Audio: June 29 1:14 PM Sarita  </div>
+                 <audio controls >
+                    <source src="audio/June_29_Sarita/+9779822256843 2024-06-29 13-14-40.m4a" type="audio/mpeg">
+                         Your browser does not support the audio element.
+                 </audio>
+                          <div class="audio-label">🎧 Audio: June 29 1:45 PM Sarita  </div>
+                 <audio controls >
+                    <source src="audio/June_29_Sarita/20240629 134542Sarita Birgunj.m4a" type="audio/mpeg">
+                         Your browser does not support the audio element.
+                 </audio>
+
+                    <div class="audio-label">🎧 Audio: June 29 2:15 PM Sarita (Invites To Townhall @Ritesh @Arjit)</div>
+                 <audio controls >
+                    <source src="audio/June_29_Sarita/20240629 141548Sarita Birgunj.m4a" type="audio/mpeg">
+                         Your browser does not support the audio element.
+                 </audio>
+
+            <div class="audio-label">🎧 Audio: June 29 3:03 PM Sarita</div>
+                 <audio controls >
+                    <source src="audio/June_29_Sarita/20240629 150030Sarita Birgunj.m4a" type="audio/mpeg">
+                         Your browser does not support the audio element.
+                 </audio>
+
+                    <div class="audio-label">🎧 Audio: June 29 3:07 PM Sarita </div>
+                    <audio controls >
+                       <source src="audio/June_29_Sarita/20240629 150708Sarita Birgunj.m4a" type="audio/mpeg">
+                          Your browser does not support the audio element.
+                   </audio>
+
+           <div class="audio-label">🎧 Audio: June 29 3:35 PM (Townhall Rajesh Dai)</div>
+                 <audio controls >
+                    <source src="audio/Jun_29_TownHall_RajeshDai/+9779815272413 2024-06-29 15-35-27.m4a" type="audio/mpeg">
+                         Your browser does not support the audio element.
+                 </audio>
+           <div class="audio-label">🎧 Audio: June 29 3:38 PM (Townhall Rajesh Dai)</div>
+                 <audio controls >
+                    <source src="audio/Jun_29_TownHall_RajeshDai/+9779815272413 2024-06-29 15-38-38.m4a" type="audio/mpeg">
+                         Your browser does not support the audio element.
+                 </audio>
+
+ <div class="audio-label">🎧 Audio: June 29 4:20 PM (Townhall Food Order Arjit)</div>
+
+
+                 <audio controls >
+                    <source src="audio/June_29_TownHall_FoodOrderBilla/9829264397 2024-06-29 16-20-10.m4a" type="audio/mpeg">
+                         Your browser does not support the audio element.
+                 </audio>
+  <div class="note">Note: Billa Food Order to Townhall : @5 Quarter Biryani + 3 Plate Momo </div>
+
+
+           <div class="audio-label">🎧 Audio: June 29 5:37 PM (Townhall Rajesh Dai)</div>
+
+                 <audio controls >
+                    <source src="audio/Jun_29_TownHall_RajeshDai/+9779815272413 2024-06-29 17-37-37.m4a" type="audio/mpeg">
+                         Your browser does not support the audio element.
+                 </audio>
+  <div class="note">Note: Hotel Checkout Tomorrow <br> Hotel Bill @4Days : 11,200 NC Pending</div>
+
+           <div class="audio-label">🎧 Audio: June 29 5:51 PM (Townhall Rajesh Dai)</div>
+                 <audio controls >
+                    <source src="audio/Jun_29_TownHall_RajeshDai/+9779815272413 2024-06-29 17-51-16.m4a" type="audio/mpeg">
+                         Your browser does not support the audio element.
+                 </audio>
+  <div class="note">Note: Still 7,100 NC PENDING <br> Converts IC TO NC @6:30 PM</div>
+
+
+        
+
+  <div class="image-gallery">
+    <img src="images/" alt="Receipt 1" class="expand-img">
+    <img src="images/" alt="Receipt 2" class="expand-img">
+  </div>
+                 <br>
+              </div>
                 </div>
    <div class="remarks">Remarks : Paid to NEW GANESH HOTEL</div>
 
@@ -542,18 +763,80 @@ Ritesh had 5000 Initially.<br>
             <!-- July 2024 -->
             <h3 class="statement-month">JULY 2024</h3>
             <div class="statement-gallery">
-                <div class="statement-item">
+                                <div class="statement-item" onclick="toggleAudio(this)">
                     <img src="esewa_statements/4. JULY 2.png" alt="July 2 Statement">
+<div class="audio-container" style="display: none; margin-top: 10px;">
+                          <div class="audio-label">🎧 Audio: July 2 1:41 PM   Townhall Kailash Dai (Pending Hotel Payment) </div>
+
+                 <audio controls >
+                    <source src="audio/July_2_TownHall_Kailash/+9779815272413 2024-07-02 13-41-14.m4a" type="audio/mpeg">
+                         Your browser does not support the audio element.
+                 </audio>
+  <div class="note">Note: Hotel : 2,100 NC Pending (Rajesh Dai) + 2 Days Room : 7,700 NC <br> Total : 9,800 NC</div>
+
+
+
+  <div class="audio-label">🎧 Audio: July 2 4:48 PM   Townhall Rajesh Dai </div>
+
+                 <audio controls >
+                    <source src="audio/July_2_Townhall_Rajesh/20240702 164858TownhallRajesh.m4a" type="audio/mpeg">
+                         Your browser does not support the audio element.
+                 </audio>
+  <div class="note">Note: </div>
+
+
+
+  <div class="audio-label">🎧 Audio: July 2 4:49 PM   Townhall Rajesh Dai  </div>
+
+                 <audio controls >
+                    <source src="audio/July_2_Townhall_Rajesh/20240702 164937TownhallRajesh.m4a" type="audio/mpeg">
+                         Your browser does not support the audio element.
+                 </audio>
+  <div class="note">Note: </div>
+
+
+
+  <div class="image-gallery">
+    <img src="images/Screenshot_20240702_180731.jpg" alt="Receipt 1" class="expand-img">
+    <img src="images/" alt="Receipt 2" class="expand-img">
+  </div>
+                 <br>
+              </div>
                 </div>
    <div class="remarks">Remarks : Sent to Rajesh Kumar Bose (Townhall Hotel) </div>
 
-                <div class="statement-item">
+                                <div class="statement-item" onclick="toggleAudio(this)">
                     <img src="esewa_statements/5. JULY 8.png" alt="July 8 Statement">
+<div class="audio-container" style="display: none; margin-top: 10px;">
+                          <div class="audio-label">🎧 Audio: june_5_townhall.mp3   <a href="audio/20240603 224026.m4a Priya Gupta.zip" download class="download-audio-btn">⬇️ </a></div>
+                 <audio controls >
+                    <source src="audio/20240603 224026.m4a Priya Gupta.m4a" type="audio/mpeg">
+                         Your browser does not support the audio element.
+                 </audio>
+  <div class="image-gallery">
+    <img src="images/Screenshot_20240708_230416.jpg" alt="Receipt 1" class="expand-img">
+    <img src="images/Screenshot_20240708_230501.jpg" alt="Receipt 2" class="expand-img">
+  </div>
+                 <br>
+              </div>
+
                 </div>
    <div class="remarks">Remarks : Money transferred to NIC ASIA BANK LTD.</div>
 
-                <div class="statement-item">
+                                <div class="statement-item" onclick="toggleAudio(this)">
                     <img src="esewa_statements/6. JULY 8_.png" alt="July 8 Additional Statement">
+ <div class="audio-container" style="display: none; margin-top: 10px;">
+                          <div class="audio-label">🎧 Audio: june_5_townhall.mp3   <a href="audio/20240603 224026.m4a Priya Gupta.zip" download class="download-audio-btn">⬇️ </a></div>
+                 <audio controls >
+                    <source src="audio/20240603 224026.m4a Priya Gupta.m4a" type="audio/mpeg">
+                         Your browser does not support the audio element.
+                 </audio>
+  <div class="image-gallery">
+    <img src="images/" alt="Receipt 1" class="expand-img">
+    <img src="images/" alt="Receipt 2" class="expand-img">
+  </div>
+                 <br>
+              </div>
                 </div>
    <div class="remarks">Remarks : Fund Transferred to Abhishek Kumar Sarraf	 </div>
 
@@ -562,16 +845,52 @@ Ritesh had 5000 Initially.<br>
             <!-- August 2024 -->
             <h3 class="statement-month">AUGUST 2024</h3>
             <div class="statement-gallery">
-                <div class="statement-item">
+                                <div class="statement-item" onclick="toggleAudio(this)">
                     <img src="esewa_statements/7. AUG 15.png" alt="August 15 Statement">
+<div class="audio-container" style="display: none; margin-top: 10px;">
+                          <div class="audio-label">🎧 Audio: june_5_townhall.mp3   <a href="audio/20240603 224026.m4a Priya Gupta.zip" download class="download-audio-btn">⬇️ </a></div>
+                 <audio controls >
+                    <source src="audio/20240603 224026.m4a Priya Gupta.m4a" type="audio/mpeg">
+                         Your browser does not support the audio element.
+                 </audio>
+  <div class="image-gallery">
+    <img src="images/" alt="Receipt 1" class="expand-img">
+    <img src="images/" alt="Receipt 2" class="expand-img">
+  </div>
+                 <br>
+              </div>
                 </div>
    <div class="remarks">Remarks : Fund Transferred to Abhinav Aman (Aman Loan Ritesh)	 </div>
 
-                <div class="statement-item">
+                                <div class="statement-item" onclick="toggleAudio(this)">
                     <img src="esewa_statements/8. AUG 25.png" alt="August 25 Statement">
+<div class="audio-container" style="display: none; margin-top: 10px;">
+                          <div class="audio-label">🎧 Audio: june_5_townhall.mp3   <a href="audio/20240603 224026.m4a Priya Gupta.zip" download class="download-audio-btn">⬇️ </a></div>
+                 <audio controls >
+                    <source src="audio/20240603 224026.m4a Priya Gupta.m4a" type="audio/mpeg">
+                         Your browser does not support the audio element.
+                 </audio>
+  <div class="image-gallery">
+    <img src="images/" alt="Receipt 1" class="expand-img">
+    <img src="images/" alt="Receipt 2" class="expand-img">
+  </div>
+                 <br>
+              </div>
                 </div>
-                <div class="statement-item">
+                                <div class="statement-item" onclick="toggleAudio(this)">
                     <img src="esewa_statements/9. AUG 25_.png" alt="August 25 Additional Statement">
+<div class="audio-container" style="display: none; margin-top: 10px;">
+                          <div class="audio-label">🎧 Audio: june_5_townhall.mp3   <a href="audio/20240603 224026.m4a Priya Gupta.zip" download class="download-audio-btn">⬇️ </a></div>
+                 <audio controls >
+                    <source src="audio/20240603 224026.m4a Priya Gupta.m4a" type="audio/mpeg">
+                         Your browser does not support the audio element.
+                 </audio>
+  <div class="image-gallery">
+    <img src="images/" alt="Receipt 1" class="expand-img">
+    <img src="images/" alt="Receipt 2" class="expand-img">
+  </div>
+                 <br>
+              </div>
                 </div>
    <div class="remarks">Remarks : Fund Transferred to KHUSBU COMMUNICATION (STAKE) 3200	 </div>
 
@@ -580,25 +899,78 @@ Ritesh had 5000 Initially.<br>
             <!-- October 2024 -->
             <h3 class="statement-month">OCTOBER 2024</h3>
             <div class="statement-gallery">
-                <div class="statement-item">
+                                <div class="statement-item" onclick="toggleAudio(this)">
                     <img src="OCT 17.jpg" alt="October 17 Statement">
+
+<div class="audio-container" style="display: none; margin-top: 10px;">
+                          <div class="audio-label">🎧 Audio: june_5_townhall.mp3   <a href="audio/20240603 224026.m4a Priya Gupta.zip" download class="download-audio-btn">⬇️ </a></div>
+                 <audio controls >
+                    <source src="audio/20240603 224026.m4a Priya Gupta.m4a" type="audio/mpeg">
+                         Your browser does not support the audio element.
+                 </audio>
+  <div class="image-gallery">
+    <img src="images/" alt="Receipt 1" class="expand-img">
+    <img src="images/" alt="Receipt 2" class="expand-img">
+  </div>
+                 <br>
+              </div>
+
                 </div>
-                <div class="statement-item">
+                                <div class="statement-item" onclick="toggleAudio(this)">
                     <img src="OCT 18.jpg" alt="October 18 Statement">
+<div class="audio-container" style="display: none; margin-top: 10px;">
+                          <div class="audio-label">🎧 Audio: june_5_townhall.mp3   <a href="audio/20240603 224026.m4a Priya Gupta.zip" download class="download-audio-btn">⬇️ </a></div>
+                 <audio controls >
+                    <source src="audio/20240603 224026.m4a Priya Gupta.m4a" type="audio/mpeg">
+                         Your browser does not support the audio element.
+                 </audio>
+  <div class="image-gallery">
+    <img src="images/" alt="Receipt 1" class="expand-img">
+    <img src="images/" alt="Receipt 2" class="expand-img">
+  </div>
+                 <br>
+              </div>
+
+
                 </div>
    <div class="remarks">Remarks : 9818837216 Statements Not Available
  </div>
 
 
             <h3 class="statement-month">CYCLONE HOLIDAY (23 Oct - 5 Nov)</h3>
-                <div class="statement-item">
+                                <div class="statement-item" onclick="toggleAudio(this)">
                     <img src="OCT 29.jpg" alt="October 29 Statement">
+
+<div class="audio-container" style="display: none; margin-top: 10px;">
+               <div class="audio-label">🎧 Audio: june_5_townhall.mp3   <a href="audio/20240603 224026.m4a Priya Gupta.zip" download class="download-audio-btn">⬇️ </a></div>
+                <audio controls >
+                  <source src="audio/20240603 224026.m4a Priya Gupta.m4a" type="audio/mpeg">
+                         Your browser does not support the audio element.
+               </audio>
+  <div class="image-gallery">
+    <img src="images/Screenshot_20241029_231227.jpg" alt="Receipt 1" class="expand-img">
+    <img src="images/Screenshot_20241029_232835.jpg" alt="Receipt 2" class="expand-img">
+  </div>
+                 <br>
+              </div>
                 </div>
    <div class="remarks">Remarks : Fund Transferred to Bibek Kumar Yadav	 </div>
 
 
-                <div class="statement-item">
+                                <div class="statement-item" onclick="toggleAudio(this)">
                     <img src="OCT 29_1.jpg" alt="October 29 Additional Statement">
+  <div class="audio-container" style="display: none; margin-top: 10px;">
+               <div class="audio-label">🎧 Audio: june_5_townhall.mp3   <a href="audio/20240603 224026.m4a Priya Gupta.zip" download class="download-audio-btn">⬇️ </a></div>
+                <audio controls >
+                  <source src="audio/20240603 224026.m4a Priya Gupta.m4a" type="audio/mpeg">
+                         Your browser does not support the audio element.
+               </audio>
+  <div class="image-gallery">
+    <img src="images/Screenshot_20241029_093030.jpg" alt="Receipt 1" class="expand-img">
+    <img src="images/" alt="Receipt 2" class="expand-img">
+  </div>
+                 <br>
+              </div>
                 </div>
    <div class="remarks">Remarks : Paid for HOTEL EVERES</div>
         <h2>Oct 30 (Night Home) -> Piggybank : 9,000 NC CASH </h2>
@@ -774,6 +1146,10 @@ Nigger
 </div>
 
 
+<!-- Lightbox Overlay -->
+<div id="lightbox-overlay" onclick="closeLightbox()">
+  <img id="lightbox-image" src="" alt="Expanded">
+</div>
 
 <!-- ----------------------------------------------Pop Up--------------------------------------------------------------------------------- -->
     <!-- Popup -->
@@ -793,7 +1169,53 @@ Nigger
 <script src="js/coinswitchData.js"></script>
 <script src="js/script.js"></script>
 
+<script>
+function toggleAudio(item) {
+  const audioDiv = item.querySelector('.audio-container');
+  const audioTag = item.querySelector('audio');
+  const source = audioTag.querySelector('source').src;
+  const filename = source.split('/').pop();
 
+ 
+
+  // Hide others
+  document.querySelectorAll('.audio-container').forEach(div => {
+    if (div !== audioDiv) {
+      div.style.display = 'none';
+      div.querySelector('audio')?.pause();
+    }
+  });
+
+  // Toggle this one
+  if (audioDiv.style.display === 'none') {
+    audioDiv.style.display = 'block';
+  } else {
+    audioDiv.style.display = 'none';
+    audioTag.pause();
+  }
+}
+
+
+
+</script>
+
+<script>
+  const expandImgs = document.querySelectorAll('.expand-img');
+  const lightbox = document.getElementById('lightbox-overlay');
+  const lightboxImg = document.getElementById('lightbox-image');
+
+  expandImgs.forEach(img => {
+    img.addEventListener('click', (e) => {
+      lightboxImg.src = e.target.src;
+      lightbox.style.display = 'flex';
+    });
+  });
+
+  function closeLightbox() {
+    lightbox.style.display = 'none';
+    lightboxImg.src = '';
+  }
+</script>
 <!-- -----------------------------------------Java Script ----------------------------------------------------------------   -->
 </body>
 </html>
