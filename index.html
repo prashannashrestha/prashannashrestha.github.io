@@ -1,1221 +1,675 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List of People Who Owe Money</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💰</text></svg>">
-    <style>
-.download-audio-btn {
-  padding: 10px 16px;
-  background-color: #6a11cb;
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 8px;
-  box-shadow: 0 0 10px #a020f0;
-  transition: background-color 0.3s ease;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List of People Who Owe Money</title>
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💰</text></svg>">
+  <style>
+    .download-audio-btn {
+      padding: 10px 16px;
+      background-color: #6a11cb;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #a020f0;
+      transition: background-color 0.3s ease;
+    }
 
-.download-audio-btn:hover {
-  background-color: #2575fc;
-}
-.audio-container {
-  background: #1a1a2e;
-  padding: 10px;
-  border-radius: 12px;
-  box-shadow: 0 0 15px #a020f0;
-  margin-top: 10px;
-  animation: fadeIn 0.3s ease;
-}
+    .download-audio-btn:hover {
+      background-color: #2575fc;
+    }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.expand-img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 0 12px #a020f0;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  object-fit: cover;
-  max-width: 100%;
-}
+    .audio-container {
+      background: #1a1a2e;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #a020f0;
+      margin-top: 10px;
+      animation: fadeIn 0.3s ease;
+    }
 
-.expand-img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 18px #ff66cc;
-}
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
 
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-.audio-label {
-  text-align: center;
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: #ffccff;
-  font-size: 1rem;
-  text-shadow: 0 0 8px #a020f0;
-}
+    .expand-img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 12px #a020f0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      object-fit: cover;
+      max-width: 100%;
+    }
 
-.audio-flex {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-.audio-flex audio {
-  width: 300px;
-  max-width: 80vw;
-}
+    .expand-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 18px #ff66cc;
+    }
 
 
-.image-gallery {
-  display: grid;
-  gap: 12px;
-  margin-top: 15px;
-  padding: 0 10px;
-  justify-content: center;
-}
+    .audio-label {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #ffccff;
+      font-size: 1rem;
+      text-shadow: 0 0 8px #a020f0;
+    }
 
-/* Force 2 images per row on phones */
-@media (max-width: 600px) {
-  .image-gallery {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+    .audio-flex {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
 
-/* Adaptive layout for tablets and up */
-@media (min-width: 601px) {
-  .image-gallery {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  }
-}
-
-#lightbox-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0,0,0,0.9);
-  z-index: 1000;
-  justify-content: center;
-  align-items: center;
-}
-
-#lightbox-overlay img {
-  max-height: 90vh;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  max-width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 0 20px #fff;
-}
-
-#lightbox-overlay:after {
-  content: "✖";
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 30px;
-  color: #fff;
-  cursor: pointer;
-}
-/* --------------------- General Styles --------------------------- */
-body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
-    /* background: linear-gradient(to right, #1e003c, #25004f); */
-    margin: 0;
-    padding: 0;
-    color: #fff;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-/* -------------------- Wrapper Class CSS -------------------------  */
-.wrapper {
-    display: flex;
-    flex-direction: row;  /* Display cards horizontally */
-    gap: 0;
-    width: 100vw;  /* Wrapper takes full screen width */
-    height: 100vh;  /* Wrapper takes full screen height */
-    overflow-x: auto;  /* Allow horizontal scrolling */
-    overflow-y: hidden;  /* Prevent vertical scrolling inside the wrapper */
-    scroll-snap-type: x mandatory;  /* Ensure the cards snap to the start */
-    position: relative;
-}
-
-/* --------------------- Card Class CSS ------------------------------  */
-.card {
-    box-sizing: border-box;
-    padding: 15px;   
-    width: 100vw;  /* Each card takes up the full viewport width */
-    height: 100vh;  /* Each card takes up the full viewport height */
-    background: rgba(255, 255, 255, 0.1);  /* Slightly transparent background for neon effect */
-    border-radius: 15px;
-box-shadow: 0 10px 30px rgba(128, 0, 128, 0.7), 0 0 20px 5px rgba(128, 0, 128, 0.7);
-    backdrop-filter: blur(10px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    scroll-snap-align: start;  /* Make sure each card snaps to the start */
-    flex-shrink: 0;  /* Prevent the cards from shrinking */
-    border: 2px solid rgba(0, 255, 255, 0.5); /* Neon border effect */
-}
-
-.card h1, .card p {
-text-shadow: 0 0 10px rgba(128, 0, 128, 0.9), 0 0 20px rgba(128, 0, 128, 0.6);
-}
-
-/*  ---------------------- Container Class CSS ---------------------------  */
-.container {
-    box-sizing: border-box;
-    margin: 0;
-    max-width: 1000px;     /* Important */
-    width: 100%;
-    margin: 20px;
-    padding: 20px;  /* 30 px */
-    background: rgba(255, 255, 255, 0.95);
-
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
-    position: relative;
-    overflow-y: auto;  /* Allow vertical scrolling inside the card */
-    height: 100%;  /* Ensure it takes full height */
-}
-
-.event-summary {
-  max-width: 700px;
-  margin: 40px auto 20px auto;
-  padding: 20px;
-  background: linear-gradient(135deg, #1e003c, #25004f);
-  border-radius: 16px;
-  box-shadow: 0 0 16px rgba(160, 32, 240, 0.6);
-  color: #fff;
-}
-
-.event-summary h2 {
-  text-align: center;
-  font-size: 1.6rem;
-  color: #ffccff;
-  margin-bottom: 10px;
-  text-shadow: 0 0 10px #a020f0;
-}
-
-#summary-text {
-  width: 100%;
-  padding: 15px;
-  border-radius: 10px;
-  border: 1px solid #a020f0;
-  background: #2a2a3c;
-  color: #fff;
-  font-size: 1rem;
-  resize: vertical;
-  box-shadow: 0 0 6px rgba(160, 32, 240, 0.4);
-}
-/* ---------------- */
-h2 {
-  text-align: center;
-  font-size: 2.2rem;
-  color: #000; /* black text */
-  text-decoration: underline; /* underline added */
-  text-decoration-color: #a020f0; /* purple underline */
-  text-shadow:
-    0 0 5px #a020f0,
-    0 0 10px #a020f0,
-    0 0 20px #a020f0,
-    0 0 40px #a020f0; /* purple glow */
-  margin-bottom: 10px;
-}
+    .audio-flex audio {
+      width: 300px;
+      max-width: 80vw;
+    }
 
 
+    .image-gallery {
+      display: grid;
+      gap: 12px;
+      margin-top: 15px;
+      padding: 0 10px;
+      justify-content: center;
+    }
 
-/*Used by flex 5 and flex 3*/
-.special_container {
-    box-sizing: border-box;
-    margin: 0;
-    max-width: 1000px;     /* Important */
-    width: 100%;
-    margin: 20px;
-    padding: 20px;  /* 30 px */
-   background: linear-gradient(to right, #1e003c, #25004f) !important;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
-    position: relative;
-    overflow-y: auto;  /* Allow vertical scrolling inside the card */
-    height: 100%;  /* Ensure it takes full height */
-}
+    /* Force 2 images per row on phones */
+    @media (max-width: 600px) {
+      .image-gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
 
-  .custom-table {
-    margin: 40px auto; /* Center horizontally */
-    border-collapse: collapse;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    min-width: 300px;
-    background: #1a1a2e;
-    color: #fff;
-    box-shadow: 0 0 15px #8a2be2;
-    border-radius: 10px;
-    overflow: hidden;
-  }
+    /* Adaptive layout for tablets and up */
+    @media (min-width: 601px) {
+      .image-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      }
+    }
 
-  .custom-table th, .custom-table td {
-    border: 1px solid #9b30ff;
-    padding: 12px 20px;
-    text-align: center;
-  }
+    #lightbox-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
 
-  .custom-table th {
-    background-color: #2e003e;
-    color: #ffccff;
-  }
+    #lightbox-overlay img {
+      max-height: 90vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #fff;
+    }
 
-  .custom-table tr:nth-child(even) {
-    background-color: #2a2a40;
-  }
+    #lightbox-overlay:after {
+      content: "✖";
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      color: #fff;
+      cursor: pointer;
+    }
 
-  .custom-table tr:hover {
-    background-color: #3a004c;
-    color: #fff;
-  }
+    /* --------------------- General Styles --------------------------- */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      /* background: linear-gradient(to right, #1e003c, #25004f); */
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-/* ---------------------------------------- NEON TEXT -------------------------------------------------- */
+    /* -------------------- Wrapper Class CSS -------------------------  */
+    .wrapper {
+      display: flex;
+      flex-direction: row;
+      /* Display cards horizontally */
+      gap: 0;
+      width: 100vw;
+      /* Wrapper takes full screen width */
+      height: 100vh;
+      /* Wrapper takes full screen height */
+      overflow-x: auto;
+      /* Allow horizontal scrolling */
+      overflow-y: hidden;
+      /* Prevent vertical scrolling inside the wrapper */
+      scroll-snap-type: x mandatory;
+      /* Ensure the cards snap to the start */
+      position: relative;
+    }
 
-.neon-text {
-  text-align: center;
-  font-size: 18px;
-  color: #ffccff;
-  font-weight: bold;
-  margin-top: 30px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #1a1a2e;
-  padding: 15px 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px #8a2be2, 0 0 30px #9b30ff;
-  border: 1px solid #9b30ff;
-  display: inline-block;
-}
-/* ---------------------------------------------------------------------------------------------------- */
+    /* --------------------- Card Class CSS ------------------------------  */
+    .card {
+      box-sizing: border-box;
+      padding: 15px;
+      width: 100vw;
+      /* Each card takes up the full viewport width */
+      height: 100vh;
+      /* Each card takes up the full viewport height */
+      background: rgba(255, 255, 255, 0.1);
+      /* Slightly transparent background for neon effect */
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(128, 0, 128, 0.7), 0 0 20px 5px rgba(128, 0, 128, 0.7);
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      scroll-snap-align: start;
+      /* Make sure each card snaps to the start */
+      flex-shrink: 0;
+      /* Prevent the cards from shrinking */
+      border: 2px solid rgba(0, 255, 255, 0.5);
+      /* Neon border effect */
+    }
 
-.logo-img {
-    width: 100px;
-    height: 100px;
-}
+    .card h1,
+    .card p {
+      text-shadow: 0 0 10px rgba(128, 0, 128, 0.9), 0 0 20px rgba(128, 0, 128, 0.6);
+    }
 
-html {
-    scroll-behavior: smooth;
-}
+    /*  ---------------------- Container Class CSS ---------------------------  */
+    .container {
+      box-sizing: border-box;
+      margin: 0;
+      max-width: 1000px;
+      /* Important */
+      width: 100%;
+      margin: 20px;
+      padding: 20px;
+      /* 30 px */
+      background: rgba(255, 255, 255, 0.95);
 
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow-y: auto;
+      /* Allow vertical scrolling inside the card */
+      height: 100%;
+      /* Ensure it takes full height */
+    }
 
-      
-/* --------------------------------  Red Text Bold ------------------------------------------------- */
-.red_text {
-    color: #e74c3c;
-    font-weight: bold;
-    font-size: 1.2em;
+    .event-summary {
+      max-width: 700px;
+      margin: 40px auto 20px auto;
+      padding: 20px;
+      background: linear-gradient(135deg, #1e003c, #25004f);
+      border-radius: 16px;
+      box-shadow: 0 0 16px rgba(160, 32, 240, 0.6);
+      color: #fff;
+    }
 
-}
+    .event-summary h2 {
+      text-align: center;
+      font-size: 1.6rem;
+      color: #ffccff;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px #a020f0;
+    }
 
+    #summary-text {
+      width: 100%;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #a020f0;
+      background: #2a2a3c;
+      color: #fff;
+      font-size: 1rem;
+      resize: vertical;
+      box-shadow: 0 0 6px rgba(160, 32, 240, 0.4);
+    }
 
+    /* ---------------- */
+    h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      color: #000;
+      /* black text */
+      text-decoration: underline;
+      /* underline added */
+      text-decoration-color: #a020f0;
+      /* purple underline */
+      text-shadow:
+        0 0 5px #a020f0,
+        0 0 10px #a020f0,
+        0 0 20px #a020f0,
+        0 0 40px #a020f0;
+      /* purple glow */
+      margin-bottom: 10px;
+    }
 
-/* ------------------------------------------------------------------------------------------------------------- */
-/*---OLD STYLE-----*/
+    /*Used by flex 5 and flex 3*/
+    .special_container {
+      box-sizing: border-box;
+      margin: 0;
+      max-width: 1000px;
+      /* Important */
+      width: 100%;
+      margin: 20px;
+      padding: 20px;
+      /* 30 px */
+      background: linear-gradient(to right, #1e003c, #25004f) !important;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow-y: auto;
+      /* Allow vertical scrolling inside the card */
+      height: 100%;
+      /* Ensure it takes full height */
+    }
 
-.old_amount{
-    font-weight: bold;
-    color: #e74c3c;
-    font-size: 1.2em;
-    text-shadow: 2px 2px 4px rgba(231, 76, 60, 0.3);
-    position: relative;
-    display: inline-block;
-    animation: pulse 1.5s ease-in-out infinite;
-    transition: all 0.3s ease;
-}
+    .custom-table {
+      margin: 40px auto;
+      /* Center horizontally */
+      border-collapse: collapse;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      min-width: 300px;
+      background: #1a1a2e;
+      color: #fff;
+      box-shadow: 0 0 15px #8a2be2;
+      border-radius: 10px;
+      overflow: hidden;
+    }
 
-.old_amount::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #e74c3c, transparent);
-    opacity: 0.6;
-}
+    .custom-table th,
+    .custom-table td {
+      border: 1px solid #9b30ff;
+      padding: 12px 20px;
+      text-align: center;
+    }
 
+    .custom-table th {
+      background-color: #2e003e;
+      color: #ffccff;
+    }
 
-.old_amount:hover {
-    color: #c0392b;
-    transform: scale(1.05) rotate(-2deg);
-    text-shadow: 3px 3px 6px rgba(192, 57, 43, 0.4);
-    cursor: pointer;
-}
+    .custom-table tr:nth-child(even) {
+      background-color: #2a2a40;
+    }
 
- /*--------------------------------------------------------------------------*/
+    .custom-table tr:hover {
+      background-color: #3a004c;
+      color: #fff;
+    }
+
+    /* ---------------------------------------- NEON TEXT -------------------------------------------------- */
+
+    .neon-text {
+      text-align: center;
+      font-size: 18px;
+      color: #ffccff;
+      font-weight: bold;
+      margin-top: 30px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #1a1a2e;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #8a2be2, 0 0 30px #9b30ff;
+      border: 1px solid #9b30ff;
+      display: inline-block;
+    }
+
+    /* ---------------------------------------------------------------------------------------------------- */
+
+    .logo-img {
+      width: 100px;
+      height: 100px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
 
 
+    /* --------------------------------  Red Text Bold ------------------------------------------------- */
+    .red_text {
+      color: #e74c3c;
+      font-weight: bold;
+      font-size: 1.2em;
+
+    }
+
+    /* ------------------------------------------------------------------------------------------------------------- */
+    /*---OLD STYLE-----*/
+
+    .old_amount {
+      font-weight: bold;
+      color: #e74c3c;
+      font-size: 1.2em;
+      text-shadow: 2px 2px 4px rgba(231, 76, 60, 0.3);
+      position: relative;
+      display: inline-block;
+      animation: pulse 1.5s ease-in-out infinite;
+      transition: all 0.3s ease;
+    }
+
+    .old_amount::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #e74c3c, transparent);
+      opacity: 0.6;
+    }
 
 
+    .old_amount:hover {
+      color: #c0392b;
+      transform: scale(1.05) rotate(-2deg);
+      text-shadow: 3px 3px 6px rgba(192, 57, 43, 0.4);
+      cursor: pointer;
+    }
 
-        /* Footer Styles */
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 0.9em;
-            color: #777;
-        }
-        /* Animations */
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(-50%) translateX(20px); }
-            to { opacity: 1; transform: translateY(-50%) translateX(0); }
-        }
+    /*--------------------------------------------------------------------------*/
+    /* Footer Styles */
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #777;
+    }
 
-        /* Add Google Fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    /* Animations */
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50%) translateX(20px);
+      }
 
+      to {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+      }
+    }
 
+    /* Add Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-img {
-    width: 10000000px; /* Fixed width */
-    max-width: 100%; /* Ensures the image doesn't overflow on smaller screens */
-    height: auto; /* Maintains the aspect ratio */
-    display: block; /* Removes extra space below the image */
-    margin: 10px auto; /* Centers the image horizontally and adds vertical spacing */
-}
-
-    </style>
-<link rel="stylesheet" href="css/flex1.css"> <!--  Pop-Up and Countdown -->
-<link rel="stylesheet" href="css/flex3.css"> <!-- Prabhu Gallery,Item -->
-<link rel="stylesheet" href="css/flex5.css"> <!-- Coinswitch -->
-<link rel="stylesheet" href="css/DownloadButton.css"> 
+    img {
+      width: 10000000px;
+      /* Fixed width */
+      max-width: 100%;
+      /* Ensures the image doesn't overflow on smaller screens */
+      height: auto;
+      /* Maintains the aspect ratio */
+      display: block;
+      /* Removes extra space below the image */
+      margin: 10px auto;
+      /* Centers the image horizontally and adds vertical spacing */
+    }
+  </style>
+  <link rel="stylesheet" href="css/flex1.css"> <!--  Pop-Up and Countdown -->
+  <link rel="stylesheet" href="css/flex3.css"> <!-- Prabhu Gallery,Item -->
+  <link rel="stylesheet" href="css/flex5.css"> <!-- Coinswitch -->
+  <link rel="stylesheet" href="css/DownloadButton.css">
 
 </head>
+
 <body>
 
-    <div class="wrapper"> 
+  <div class="wrapper" id="card-wrapper">
 
- <!--  ------------------------------------------------Flex Card 1 --------------------------------------------------------------------- -->
-<div class="card">
-           <div class="container">
+    <!--  ------------------------------------------------Flex Card 1 --------------------------------------------------------------------- -->
+    <div class="card">
+      <div class="container">
         <h1>List of People Who Owe Money</h1>
-        <input type="text" id="search" placeholder="Search for a name..." style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; font-size: 1em;">
+        <input type="text" id="search" placeholder="Search for a name..."
+          style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; font-size: 1em;">
 
 
         <ul>
 
-            <li data-details="Ritesh Kumar Chauhan" data-image="friends/Ritesh.png" data-amount="Rs. TRANSFERRED TO AMAN " data-date="2025-03-10" data-notes="Old : 350 + Rs.100 * 3 (Cash)+ Rs.200 * 2 (Cash) + 3400 Cash, 350 Aman + 250 Aman ( Total : 5050 ) TRANSFERRED TO AMAN" data-cash=" 9,000 Nc Cash @cyclone home (Townhall -> LAPTOP SELL but I saved)+ 14,000 Nc Cash (ABC TRIP) Finally Laptop SOLD (32,000 Inr Stake Dadi Loss)" data-extra="1230 INR (Rohan 5k Sony D) + 800 INR (HARIOM ESEWA STAKE LOSS) + 1000 INR (Sujit -> Ritesh Hospital) + 4000 INR (Old Sonu Cash ,Bike Deal) + 6510 INR (Cyclone AVINASH+RITESH+ME)">
-                <span class="name">Ritesh Chauhan</span>
-                <span class="red_boxtext">IC 4,87,931<br></span>
-                <div class="countdown">
-                    <div><span id="days1">00</span><small>Days</small></div>
-                    <div><span id="hours1">00</span><small>Hours</small></div>
-                    <div><span id="minutes1">00</span><small>Minutes</small></div>
-                    <div><span id="seconds1">00</span><small>Seconds</small></div>
-                </div>
-            </li>
-
-            <li data-details="Abhinav Aman" data-image="friends/Aman.png" data-amount="9,450 INR" data-date="2025-03-12" data-notes="ATM CASH DEPOSIT , TOTAL : RS. 5000 , -350 RITESH FOOD  , -250 RITESH FOOD , -900 [Stake deposit 500 + 400 Food ] - [4400] - (-2500 ritesh stake loss) 1900@OLD + [5050] @Ritesh Total : 9,450 INR " data-extra="4400(-2500 Ritesh Stake loss -1250 -900 bet ) -250 LEFT+ 500 STAKE BET LEFT (ANMOL , SAR) + 5050 INR LEFT (-240 Biryani Aman/Me  - 50 Kela - (160+50)Reimbriusemnet Party (ritesh,me,aman)) , Anmol +1000 added">
-                <span class="name">Abhinav Aman</span>
-                <span class="red_boxtext">IC 4,600</span>
-                <div class="countdown">
-                    <div><span id="days2">00</span><small>Days</small></div>
-                    <div><span id="hours2">00</span><small>Hours</small></div>
-                    <div><span id="minutes2">00</span><small>Minutes</small></div>
-                    <div><span id="seconds2">00</span><small>Seconds</small></div>
-                </div>
-            </li>
+          <li data-details="Ritesh Kumar Chauhan" data-image="friends/Ritesh.png" data-amount="Rs. TRANSFERRED TO AMAN "
+            data-date="2025-03-10"
+            data-notes="Old : 350 + Rs.100 * 3 (Cash)+ Rs.200 * 2 (Cash) + 3400 Cash, 350 Aman + 250 Aman ( Total : 5050 ) TRANSFERRED TO AMAN"
+            data-cash=" 9,000 Nc Cash @cyclone home (Townhall -> LAPTOP SELL but I saved)+ 14,000 Nc Cash (ABC TRIP) Finally Laptop SOLD (32,000 Inr Stake Dadi Loss)"
+            data-extra="1230 INR (Rohan 5k Sony D) + 800 INR (HARIOM ESEWA STAKE LOSS) + 1000 INR (Sujit -> Ritesh Hospital) + 4000 INR (Old Sonu Cash ,Bike Deal) + 6510 INR (Cyclone AVINASH+RITESH+ME)">
+            <span class="name">Ritesh Chauhan</span>
+            <span class="red_boxtext">IC 4,87,931<br></span>
+            <div class="countdown">
+              <div><span id="days1">00</span><small>Days</small></div>
+              <div><span id="hours1">00</span><small>Hours</small></div>
+              <div><span id="minutes1">00</span><small>Minutes</small></div>
+              <div><span id="seconds1">00</span><small>Seconds</small></div>
+            </div>
+          </li>
 
 
-            
-            <li data-details="Anmol Mishra" data-amount="1,840 INR (Total) CLEARD" data-date="2025-03-06" data-notes=" FOOD : 500 *2 , Dipesh : 340 + ATM left : 200 + 300 AVINASH" data-extra="1000 Aman Pending, Anmol gave 500 . 340 Spent in food aman and me">
-                <span class="name">Anmol Mishra</span>
-                <span class="red_boxtext">0</span>
-                
-                <div class="countdown">
-                    <div><span id="days3">00</span><small>Days</small></div>
-                    <div><span id="hours3">00</span><small>Hours</small></div>
-                    <div><span id="minutes3">00</span><small>Minutes</small></div>
-                    <div><span id="seconds3">00</span><small>Seconds</small></div>
-                </div>
-            </li>
 
-                    <li data-details="Pankaj Kumar Gupta" data-image="friends/Pankaj.png" data-amount="17,000 INR" data-date="2024-03-04" data-notes="Credit Card , Total : 20,000 ">
-                <span class="name">Pankaj Gupta</span>
-                <span class="red_boxtext">17,000 INR (Old)</span>
-                <div class="countdown">
-                    <div><span id="days4">00</span><small>Days</small></div>
-                    <div><span id="hours4">00</span><small>Hours</small></div>
-                    <div><span id="minutes4">00</span><small>Minutes</small></div>
-                    <div><span id="seconds4">00</span><small>Seconds</small></div>
-                </div>
-            </li>
+          <li data-details="Abhinav Aman" data-image="friends/Aman.png" data-amount="9,450 INR" data-date="2025-03-12"
+            data-notes="ATM CASH DEPOSIT , TOTAL : RS. 5000 , -350 RITESH FOOD  , -250 RITESH FOOD , -900 [Stake deposit 500 + 400 Food ] - [4400] - (-2500 ritesh stake loss) 1900@OLD + [5050] @Ritesh Total : 9,450 INR "
+            data-extra="4400(-2500 Ritesh Stake loss -1250 -900 bet ) -250 LEFT+ 500 STAKE BET LEFT (ANMOL , SAR) + 5050 INR LEFT (-240 Biryani Aman/Me  - 50 Kela - (160+50)Reimbriusemnet Party (ritesh,me,aman)) , Anmol +1000 added">
+            <span class="name">Abhinav Aman</span>
+            <span class="red_boxtext">IC 4,600</span>
+            <div class="countdown">
+              <div><span id="days2">00</span><small>Days</small></div>
+              <div><span id="hours2">00</span><small>Hours</small></div>
+              <div><span id="minutes2">00</span><small>Minutes</small></div>
+              <div><span id="seconds2">00</span><small>Seconds</small></div>
+            </div>
+          </li>
 
-            <li data-details="Bibek Yadav" data-image="friends/Bibek.png" data-amount="4,900 INR" data-date="2023-08-20" data-notes="Iphone Loan , Total : 5500">
-                <span class="name">Bibek Yadav</span>
-                <span class="red_boxtext">4,900 INR (Old)</span>
-                <div class="countdown">
-                    <div><span id="days5">00</span><small>Days</small></div>
-                    <div><span id="hours5">00</span><small>Hours</small></div>
-                    <div><span id="minutes5">00</span><small>Minutes</small></div>
-                    <div><span id="seconds5">00</span><small>Seconds</small></div>
-                </div>
-            </li>
+          <div class="event-summary" id="aman-dropdown" style="display: none;">
+            <div class="dropdown-content">
+              <div class="note">Note: I gave aman 5000 Cash Deposited to ATM</div>
+              <span class="note_1"> Ritesh Food : -350 </span><br>
+              <span class="note_1"> Ritesh Food : -250 </span><br>
+              <div class="note">Pending : 4,400</div>
+              <div class="note">Ritesh Loan Cleared : +5,050</div>
+              <div class="note">Total aman : 9,450</div>
 
-            <li data-details="Avinash Khatri" data-image="https://via.placeholder.com/300" data-amount="2,300 INR" data-date="2023-05-01" data-notes="Forex , Total : 6300   (4000 CASH ME -> ANIKET) + 300 (ANMOL GPAY)">
-                <span class="name">Avinash Khatri</span>
-                <span class="red_boxtext">2,000 INR (OLD)</span>
-                <div class="countdown">
-                    <div><span id="days6">00</span><small>Days</small></div>
-                    <div><span id="hours6">00</span><small>Hours</small></div>
-                    <div><span id="minutes6">00</span><small>Minutes</small></div>
-                    <div><span id="seconds6">00</span><small>Seconds</small></div>
-                </div>
-            </li>
+              <span class="note_1"> Stake Deposit : -900 (500 Deposit+400 Food)</span><br>
+              <span class="note_1"> Saransh,Anmol,Aman Bet : +500 Deposit </span><br>
+              <span class="note_1"> Aman sent to Ritesh (SL) : -2500 </span><br>
+              <span class="note_1"> Aman Ritesh Loan (SL): -1250</span><br>
+              <span class="note_1"> Aman , Me (Biryani) Night : -240 </span><br>
+              <span class="note_1"> Kela : -50 </span><br>
+              <span class="note_1"> Reimbruisemnt Part (Ritesh,Me,Aman) : -210 </span><br>
+              <span class="note_1"> Anmol says Aman Pay: +1000 </span><br>
+              <span class="note_1"> Aman gave -1200 for Rohit Bank ACC : -1200 </span><br>
+              <br>
+              <br>
+              <span class="red_boxtext"> Final Pending Amount : 4,600 IC </span><br>
+
+            </div>
+          </div>
+
+          <li data-details="Anmol Mishra" data-amount="1,840 INR (Total) CLEARD" data-date="2025-03-06"
+            data-notes=" FOOD : 500 *2 , Dipesh : 340 + ATM left : 200 + 300 AVINASH"
+            data-extra="1000 Aman Pending, Anmol gave 500 . 340 Spent in food aman and me">
+            <span class="name">Anmol Mishra</span>
+            <span class="red_boxtext">0</span>
+
+            <div class="countdown">
+              <div><span id="days3">00</span><small>Days</small></div>
+              <div><span id="hours3">00</span><small>Hours</small></div>
+              <div><span id="minutes3">00</span><small>Minutes</small></div>
+              <div><span id="seconds3">00</span><small>Seconds</small></div>
+            </div>
+          </li>
+
+          <li data-details="Pankaj Kumar Gupta" data-image="friends/Pankaj.png" data-amount="17,000 INR"
+            data-date="2024-03-04" data-notes="Credit Card , Total : 20,000 ">
+            <span class="name">Pankaj Gupta</span>
+            <span class="red_boxtext">17,000 INR (Old)</span>
+            <div class="countdown">
+              <div><span id="days4">00</span><small>Days</small></div>
+              <div><span id="hours4">00</span><small>Hours</small></div>
+              <div><span id="minutes4">00</span><small>Minutes</small></div>
+              <div><span id="seconds4">00</span><small>Seconds</small></div>
+            </div>
+          </li>
+
+          <li data-details="Bibek Yadav" data-image="friends/Bibek.png" data-amount="4,900 INR" data-date="2023-08-20"
+            data-notes="Iphone Loan , Total : 5500">
+            <span class="name">Bibek Yadav</span>
+            <span class="red_boxtext">4,900 INR (Old)</span>
+            <div class="countdown">
+              <div><span id="days5">00</span><small>Days</small></div>
+              <div><span id="hours5">00</span><small>Hours</small></div>
+              <div><span id="minutes5">00</span><small>Minutes</small></div>
+              <div><span id="seconds5">00</span><small>Seconds</small></div>
+            </div>
+          </li>
+
+          <li data-details="Avinash Khatri" data-image="https://via.placeholder.com/300" data-amount="2,300 INR"
+            data-date="2023-05-01" data-notes="Forex , Total : 6300   (4000 CASH ME -> ANIKET) + 300 (ANMOL GPAY)">
+            <span class="name">Avinash Khatri</span>
+            <span class="red_boxtext">2,000 INR (OLD)</span>
+            <div class="countdown">
+              <div><span id="days6">00</span><small>Days</small></div>
+              <div><span id="hours6">00</span><small>Hours</small></div>
+              <div><span id="minutes6">00</span><small>Minutes</small></div>
+              <div><span id="seconds6">00</span><small>Seconds</small></div>
+            </div>
+          </li>
         </ul>
 
         <p id="total-sum"></p>
         <footer>
-            <p id="last-updated"></p>
+          <p id="last-updated"></p>
         </footer>
-       </div>
+      </div>
     </div>
- <!--  ------------------------------------------------Flex Card 2 --------------------------------------------------------------------- -->
-    <div class="card">
-    <div class="container">
-          <h1>Latest Record Urgent Pay</h1>
-          <span class="name">1. Rohit Bank Deposit : </span> 
-          <span  class="old_amount">IC 2,700 </span>
-          <br>
-        <p class="neon-text">Note : Gave 2700 to Ritesh  Cash</p>
-  <table  class="custom-table">
-  <thead>
-    <tr>
-      <th>Name & Type</th>
-      <th>Amount</th>
-      <th>Mode</th>
-      <th>Status</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Hari Sah </td>
-      <td>1000 (IC)</td>
-      <td>Gpay</td>
-      <td>Ritesh Pending</td>
 
 
-    </tr>
-    <tr>
-      <td>Prajwal Panth </td>
-      <td>500 (IC) </td>
-      <td>Gpay</td>
-      <td>Ritesh Pending</td>
-
-    </tr>
-    <tr>
-      <td>Aman Karn </td>
-      <td>1200 (IC) </td>
-      <td>Cash</td>
-      <td>Ritesh Pending</td>
-    </tr>
 
 
-    <tr>
-      <td>Total  </td>
-      <td>2,700 (IC) </td>
-      <td></td>
-      <td>Ritesh Pending</td>
-    </tr>
-  </tbody>
-</table>
-          <span class="name">2. Surya Prakash Shah : </span> 
-          <span  class="old_amount">IC 260 </span>
-          <br>
-          <p class="neon-text">Note : Ritesh whatsapp Surya  260 ic -> 400 NC Pending </p> <br>
-
-          <span class="name">3. Reimbruisement Form : </span> 
-          <span  class="old_amount">10,500 </span> <br>
-          <p class="neon-text">Note : Ritesh played Stake (Ritesh541)</p> <br>
-
-          <span class="name">4. Kims Convert (16k nc home) : </span>
-          <span  class="old_amount">IC 10,000 </span>
-          <p class="neon-text">Remarks : Home KIMS CONVERT Ritesh played Stake (Ritesh541) </p><br>
-
-          <span class="name">5. Kims Convert (8k nc home)  : </span>
-          <span  class="old_amount">IC 5,000 </span>
-<div class="event-summary">
-  <h2>Summary</h2>
-Ritesh had 5000 Initially.<br>
-<span class="note_1"> Sent -2000 To Avinash Prasad Kurmi (Collected) </span><br> 
-<span class="note_1"> I sent him +1000 from Prajwal Panth</span><br> 
-<span class="note_1"> Ritesh gave me -1000 Cash in Room (Collected)</span><br> 
-<span class="note_1"> I used his Gpay -700 (Rohit Sharma)</span><br> 
-<span class="note_1"> Ritesh gave me -500 Cash in Room (Collected)</span><br> 
-
-
-<h5> Ritesh Kumar Chauhan : 1,800 To collect</h5> 
-
-<h5> Rohit Sharma : 700 To Collect</h5>
-<h5> To give Prajwal Panth: 1000 </h5>
-    
-          <span class="red_boxtext">Available </span>
-  <span  class="old_amount">IC 3,500 CASH </span>
-
-<span class="note"> Dilip sent +200 To Ritesh + Sushant 500 Rs bet</span><br> 
-
-</div>
-          <p class="neon-text">Remarks : Home KIMS CONVERT  </p>
-
-
-<div class="event-summary">
-  <h2>Summary</h2>
-<span>-> Aman Sent 900 to Ritesh  </span><br>
-<span>-> Aman Sent IC 2500 (Check Gpay) </span><br>
-<span>-> Aman Deduct Ritesh Old Slice 1250 (Aman Hisab) </span><br>
-</div>
-
-        </div>
-        </div>
- <!--  ------------------------------------------------Flex Card 3 --------------------------------------------------------------------- -->
-  <div class="card">
-           <div class="special_container">
- 
-<div class="custom">
-        <h2><img src="esewa_logo.png" alt="Description of image" height="100" width="150" style="float: left;"  class="logo-img"> PrabhuBank Details!</h2>
-
-            <div class="note">
-                <i class="fas fa-info-circle"></i> Money was sent from Prabhu Bank to Ritesh's Esewa account
-            </div>
-
-        <h2>Ritesh Kumar Chauhan</h2>  
-        <h5>E-Sewa Number : 9818837216 || 9818837215</h5>
-  <div class="summary">
-    <img src="friends/Ritesh.png" alt="Ritesh">
-
-    <div class="summary-text">
-      <strong>Ritesh</strong> still owes  <span  class="old_amount">NC 62,200 </span> to Prashanna Shrestha.
-      <br>
-       <div class="note_1">38,200 Prabhu Bank to Ritesh Esewa (Online)</div>
-
-       <div class="note_1">9,000 (Cyclone Cash PiggyBank Home)</div>
-        <div class="note_1">15,000 (Abc Trip Cash PiggyBank Home)</div>
-
-  <div class="note">Note: Screenshots are attached below and cash taken twice with tweezer's from piggybank during Cyclone and ABC trip.</div>
-
+    <!-- Lightbox Overlay -->
+    <div id="lightbox-overlay" onclick="closeLightbox()">
+      <img id="lightbox-image" src="" alt="Expanded">
     </div>
-  </div>
 
-            <div class="progress-container">
-                <div class="progress-text">
-                    <span>Amount Recovered: Rs. 0</span>
-                    <span>Total: Rs. 62,200</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 0%"></div>
-                </div>
-            </div>
-
-
-<!-- April 2024 -->
-            <h3 class="statement-month">APRIL 2024</h3>
-            <div class="statement-gallery">
-                                <div class="statement-item" onclick="toggleAudio(this)">
-                    <img src="esewa_statements/1. APR 4.png" alt="April 4 Statement">
-              
-              <div class="audio-container" style="display: none; margin-top: 10px;">
-                          <div class="audio-label">🎧 Audio: june_5_townhall.mp3   <a href="audio/20240603 224026.m4a Priya Gupta.zip" download class="download-audio-btn">⬇️ </a></div>
-                 <audio controls >
-                    <source src="audio/20240603 224026.m4a Priya Gupta.m4a" type="audio/mpeg">
-                         Your browser does not support the audio element.
-                 </audio>
-  <div class="image-gallery">
-    <img src="images/Screenshot_20240404_020859.jpg" alt="Receipt 1" class="expand-img">
-    <img src="images/Screenshot_20240405_014726.jpg" alt="Receipt 2" class="expand-img">
-  </div>
-                 <br>
-              </div>
-
-  </div>
-   <div class="remarks">Remarks : Sent to Abhinav Aman (Aman Loan Ritesh) </div>
-
-
-            </div>
-
-            <!-- June 2024 -->
-            <h3 class="statement-month">JUNE 2024</h3>
-            <div class="statement-gallery">
-                                <div class="statement-item" onclick="toggleAudio(this)">
-                    <img src="esewa_statements/2. JUNE 5.png" alt="June 5 Statement">
-<div class="audio-container" style="display: none; margin-top: 10px;">
-                          <div class="audio-label">🎧 Audio: June 5 1:31 AM Prashanna (Ritesh Asking Money)</div>
-                 <audio controls >
-                    <source src="audio/June_5_Prashanna_Money_Ask/prashanna home landline 2024-06-05 01-31-35.m4a" type="audio/mpeg">
-                         Your browser does not support the audio element.
-                 </audio>
-  <div class="note">Note: Ritesh asking for money at night 1:31 AM</div>
-
-  <div class="image-gallery">
-    <img src="images/" alt="Receipt 1" class="expand-img">
-    <img src="images/" alt="Receipt 2" class="expand-img">
-  </div>
-                 <br>
-              </div>
-                </div>
-   <div class="remarks">Remarks : Sent to Rajesh Kumar Bose (Townhall Hotel)	 </div>
-
-                                <div class="statement-item" onclick="toggleAudio(this)">
-                    <img src="esewa_statements/3. JUNE 29.png" alt="June 29 Statement">
-<div class="audio-container" style="display: none; margin-top: 10px;">
-
-<div class="audio-label">🎧 Audio: June 29 1:14 PM Sarita  </div>
-                 <audio controls >
-                    <source src="audio/June_29_Sarita/+9779822256843 2024-06-29 13-14-40.m4a" type="audio/mpeg">
-                         Your browser does not support the audio element.
-                 </audio>
-                          <div class="audio-label">🎧 Audio: June 29 1:45 PM Sarita  </div>
-                 <audio controls >
-                    <source src="audio/June_29_Sarita/20240629 134542Sarita Birgunj.m4a" type="audio/mpeg">
-                         Your browser does not support the audio element.
-                 </audio>
-
-                    <div class="audio-label">🎧 Audio: June 29 2:15 PM Sarita (Invites To Townhall @Ritesh @Arjit)</div>
-                 <audio controls >
-                    <source src="audio/June_29_Sarita/20240629 141548Sarita Birgunj.m4a" type="audio/mpeg">
-                         Your browser does not support the audio element.
-                 </audio>
-
-            <div class="audio-label">🎧 Audio: June 29 3:03 PM Sarita</div>
-                 <audio controls >
-                    <source src="audio/June_29_Sarita/20240629 150030Sarita Birgunj.m4a" type="audio/mpeg">
-                         Your browser does not support the audio element.
-                 </audio>
-
-                    <div class="audio-label">🎧 Audio: June 29 3:07 PM Sarita </div>
-                    <audio controls >
-                       <source src="audio/June_29_Sarita/20240629 150708Sarita Birgunj.m4a" type="audio/mpeg">
-                          Your browser does not support the audio element.
-                   </audio>
-
-           <div class="audio-label">🎧 Audio: June 29 3:35 PM (Townhall Rajesh Dai)</div>
-                 <audio controls >
-                    <source src="audio/Jun_29_TownHall_RajeshDai/+9779815272413 2024-06-29 15-35-27.m4a" type="audio/mpeg">
-                         Your browser does not support the audio element.
-                 </audio>
-           <div class="audio-label">🎧 Audio: June 29 3:38 PM (Townhall Rajesh Dai)</div>
-                 <audio controls >
-                    <source src="audio/Jun_29_TownHall_RajeshDai/+9779815272413 2024-06-29 15-38-38.m4a" type="audio/mpeg">
-                         Your browser does not support the audio element.
-                 </audio>
-
- <div class="audio-label">🎧 Audio: June 29 4:20 PM (Townhall Food Order Arjit)</div>
-
-
-                 <audio controls >
-                    <source src="audio/June_29_TownHall_FoodOrderBilla/9829264397 2024-06-29 16-20-10.m4a" type="audio/mpeg">
-                         Your browser does not support the audio element.
-                 </audio>
-  <div class="note">Note: Billa Food Order to Townhall : @5 Quarter Biryani + 3 Plate Momo </div>
-
-
-           <div class="audio-label">🎧 Audio: June 29 5:37 PM (Townhall Rajesh Dai)</div>
-
-                 <audio controls >
-                    <source src="audio/Jun_29_TownHall_RajeshDai/+9779815272413 2024-06-29 17-37-37.m4a" type="audio/mpeg">
-                         Your browser does not support the audio element.
-                 </audio>
-  <div class="note">Note: Hotel Checkout Tomorrow <br> Hotel Bill @4Days : 11,200 NC Pending</div>
-
-           <div class="audio-label">🎧 Audio: June 29 5:51 PM (Townhall Rajesh Dai)</div>
-                 <audio controls >
-                    <source src="audio/Jun_29_TownHall_RajeshDai/+9779815272413 2024-06-29 17-51-16.m4a" type="audio/mpeg">
-                         Your browser does not support the audio element.
-                 </audio>
-  <div class="note">Note: Still 7,100 NC PENDING <br> Converts IC TO NC @6:30 PM</div>
-
-
-        
-
-  <div class="image-gallery">
-    <img src="images/" alt="Receipt 1" class="expand-img">
-    <img src="images/" alt="Receipt 2" class="expand-img">
-  </div>
-                 <br>
-              </div>
-                </div>
-   <div class="remarks">Remarks : Paid to NEW GANESH HOTEL</div>
-
-            </div>
-
-            <!-- July 2024 -->
-            <h3 class="statement-month">JULY 2024</h3>
-            <div class="statement-gallery">
-                                <div class="statement-item" onclick="toggleAudio(this)">
-                    <img src="esewa_statements/4. JULY 2.png" alt="July 2 Statement">
-<div class="audio-container" style="display: none; margin-top: 10px;">
-                          <div class="audio-label">🎧 Audio: July 2 1:41 PM   Townhall Kailash Dai (Pending Hotel Payment) </div>
-
-                 <audio controls >
-                    <source src="audio/July_2_TownHall_Kailash/+9779815272413 2024-07-02 13-41-14.m4a" type="audio/mpeg">
-                         Your browser does not support the audio element.
-                 </audio>
-  <div class="note">Note: Hotel : 2,100 NC Pending (Rajesh Dai) + 2 Days Room : 7,700 NC <br> Total : 9,800 NC</div>
-
-
-
-  <div class="audio-label">🎧 Audio: July 2 4:48 PM   Townhall Rajesh Dai </div>
-
-                 <audio controls >
-                    <source src="audio/July_2_Townhall_Rajesh/20240702 164858TownhallRajesh.m4a" type="audio/mpeg">
-                         Your browser does not support the audio element.
-                 </audio>
-  <div class="note">Note: </div>
-
-
-
-  <div class="audio-label">🎧 Audio: July 2 4:49 PM   Townhall Rajesh Dai  </div>
-
-                 <audio controls >
-                    <source src="audio/July_2_Townhall_Rajesh/20240702 164937TownhallRajesh.m4a" type="audio/mpeg">
-                         Your browser does not support the audio element.
-                 </audio>
-  <div class="note">Note: </div>
-
-
-
-  <div class="image-gallery">
-    <img src="images/Screenshot_20240702_180731.jpg" alt="Receipt 1" class="expand-img">
-    <img src="images/" alt="Receipt 2" class="expand-img">
-  </div>
-                 <br>
-              </div>
-                </div>
-   <div class="remarks">Remarks : Sent to Rajesh Kumar Bose (Townhall Hotel) </div>
-
-                                <div class="statement-item" onclick="toggleAudio(this)">
-                    <img src="esewa_statements/5. JULY 8.png" alt="July 8 Statement">
-<div class="audio-container" style="display: none; margin-top: 10px;">
-                          <div class="audio-label">🎧 Audio: june_5_townhall.mp3   <a href="audio/20240603 224026.m4a Priya Gupta.zip" download class="download-audio-btn">⬇️ </a></div>
-                 <audio controls >
-                    <source src="audio/20240603 224026.m4a Priya Gupta.m4a" type="audio/mpeg">
-                         Your browser does not support the audio element.
-                 </audio>
-  <div class="image-gallery">
-    <img src="images/Screenshot_20240708_230416.jpg" alt="Receipt 1" class="expand-img">
-    <img src="images/Screenshot_20240708_230501.jpg" alt="Receipt 2" class="expand-img">
-  </div>
-                 <br>
-              </div>
-
-                </div>
-   <div class="remarks">Remarks : Money transferred to NIC ASIA BANK LTD.</div>
-
-                                <div class="statement-item" onclick="toggleAudio(this)">
-                    <img src="esewa_statements/6. JULY 8_.png" alt="July 8 Additional Statement">
- <div class="audio-container" style="display: none; margin-top: 10px;">
-                          <div class="audio-label">🎧 Audio: june_5_townhall.mp3   <a href="audio/20240603 224026.m4a Priya Gupta.zip" download class="download-audio-btn">⬇️ </a></div>
-                 <audio controls >
-                    <source src="audio/20240603 224026.m4a Priya Gupta.m4a" type="audio/mpeg">
-                         Your browser does not support the audio element.
-                 </audio>
-  <div class="image-gallery">
-    <img src="images/" alt="Receipt 1" class="expand-img">
-    <img src="images/" alt="Receipt 2" class="expand-img">
-  </div>
-                 <br>
-              </div>
-                </div>
-   <div class="remarks">Remarks : Fund Transferred to Abhishek Kumar Sarraf	 </div>
-
-            </div>
-
-            <!-- August 2024 -->
-            <h3 class="statement-month">AUGUST 2024</h3>
-            <div class="statement-gallery">
-                                <div class="statement-item" onclick="toggleAudio(this)">
-                    <img src="esewa_statements/7. AUG 15.png" alt="August 15 Statement">
-<div class="audio-container" style="display: none; margin-top: 10px;">
-                          <div class="audio-label">🎧 Audio: june_5_townhall.mp3   <a href="audio/20240603 224026.m4a Priya Gupta.zip" download class="download-audio-btn">⬇️ </a></div>
-                 <audio controls >
-                    <source src="audio/20240603 224026.m4a Priya Gupta.m4a" type="audio/mpeg">
-                         Your browser does not support the audio element.
-                 </audio>
-  <div class="image-gallery">
-    <img src="images/" alt="Receipt 1" class="expand-img">
-    <img src="images/" alt="Receipt 2" class="expand-img">
-  </div>
-                 <br>
-              </div>
-                </div>
-   <div class="remarks">Remarks : Fund Transferred to Abhinav Aman (Aman Loan Ritesh)	 </div>
-
-                                <div class="statement-item" onclick="toggleAudio(this)">
-                    <img src="esewa_statements/8. AUG 25.png" alt="August 25 Statement">
-<div class="audio-container" style="display: none; margin-top: 10px;">
-                          <div class="audio-label">🎧 Audio: june_5_townhall.mp3   <a href="audio/20240603 224026.m4a Priya Gupta.zip" download class="download-audio-btn">⬇️ </a></div>
-                 <audio controls >
-                    <source src="audio/20240603 224026.m4a Priya Gupta.m4a" type="audio/mpeg">
-                         Your browser does not support the audio element.
-                 </audio>
-  <div class="image-gallery">
-    <img src="images/" alt="Receipt 1" class="expand-img">
-    <img src="images/" alt="Receipt 2" class="expand-img">
-  </div>
-                 <br>
-              </div>
-                </div>
-                                <div class="statement-item" onclick="toggleAudio(this)">
-                    <img src="esewa_statements/9. AUG 25_.png" alt="August 25 Additional Statement">
-<div class="audio-container" style="display: none; margin-top: 10px;">
-                          <div class="audio-label">🎧 Audio: june_5_townhall.mp3   <a href="audio/20240603 224026.m4a Priya Gupta.zip" download class="download-audio-btn">⬇️ </a></div>
-                 <audio controls >
-                    <source src="audio/20240603 224026.m4a Priya Gupta.m4a" type="audio/mpeg">
-                         Your browser does not support the audio element.
-                 </audio>
-  <div class="image-gallery">
-    <img src="images/" alt="Receipt 1" class="expand-img">
-    <img src="images/" alt="Receipt 2" class="expand-img">
-  </div>
-                 <br>
-              </div>
-                </div>
-   <div class="remarks">Remarks : Fund Transferred to KHUSBU COMMUNICATION (STAKE) 3200	 </div>
-
-            </div>
-
-            <!-- October 2024 -->
-            <h3 class="statement-month">OCTOBER 2024</h3>
-            <div class="statement-gallery">
-                                <div class="statement-item" onclick="toggleAudio(this)">
-                    <img src="OCT 17.jpg" alt="October 17 Statement">
-
-<div class="audio-container" style="display: none; margin-top: 10px;">
-                          <div class="audio-label">🎧 Audio: june_5_townhall.mp3   <a href="audio/20240603 224026.m4a Priya Gupta.zip" download class="download-audio-btn">⬇️ </a></div>
-                 <audio controls >
-                    <source src="audio/20240603 224026.m4a Priya Gupta.m4a" type="audio/mpeg">
-                         Your browser does not support the audio element.
-                 </audio>
-  <div class="image-gallery">
-    <img src="images/" alt="Receipt 1" class="expand-img">
-    <img src="images/" alt="Receipt 2" class="expand-img">
-  </div>
-                 <br>
-              </div>
-
-                </div>
-                                <div class="statement-item" onclick="toggleAudio(this)">
-                    <img src="OCT 18.jpg" alt="October 18 Statement">
-<div class="audio-container" style="display: none; margin-top: 10px;">
-                          <div class="audio-label">🎧 Audio: june_5_townhall.mp3   <a href="audio/20240603 224026.m4a Priya Gupta.zip" download class="download-audio-btn">⬇️ </a></div>
-                 <audio controls >
-                    <source src="audio/20240603 224026.m4a Priya Gupta.m4a" type="audio/mpeg">
-                         Your browser does not support the audio element.
-                 </audio>
-  <div class="image-gallery">
-    <img src="images/" alt="Receipt 1" class="expand-img">
-    <img src="images/" alt="Receipt 2" class="expand-img">
-  </div>
-                 <br>
-              </div>
-
-
-                </div>
-   <div class="remarks">Remarks : 9818837216 Statements Not Available
- </div>
-
-
-            <h3 class="statement-month">CYCLONE HOLIDAY (23 Oct - 5 Nov)</h3>
-                                <div class="statement-item" onclick="toggleAudio(this)">
-                    <img src="OCT 29.jpg" alt="October 29 Statement">
-
-<div class="audio-container" style="display: none; margin-top: 10px;">
-               <div class="audio-label">🎧 Audio: june_5_townhall.mp3   <a href="audio/20240603 224026.m4a Priya Gupta.zip" download class="download-audio-btn">⬇️ </a></div>
-                <audio controls >
-                  <source src="audio/20240603 224026.m4a Priya Gupta.m4a" type="audio/mpeg">
-                         Your browser does not support the audio element.
-               </audio>
-  <div class="image-gallery">
-    <img src="images/Screenshot_20241029_231227.jpg" alt="Receipt 1" class="expand-img">
-    <img src="images/Screenshot_20241029_232835.jpg" alt="Receipt 2" class="expand-img">
-  </div>
-                 <br>
-              </div>
-                </div>
-   <div class="remarks">Remarks : Fund Transferred to Bibek Kumar Yadav	 </div>
-
-
-                                <div class="statement-item" onclick="toggleAudio(this)">
-                    <img src="OCT 29_1.jpg" alt="October 29 Additional Statement">
-  <div class="audio-container" style="display: none; margin-top: 10px;">
-               <div class="audio-label">🎧 Audio: june_5_townhall.mp3   <a href="audio/20240603 224026.m4a Priya Gupta.zip" download class="download-audio-btn">⬇️ </a></div>
-                <audio controls >
-                  <source src="audio/20240603 224026.m4a Priya Gupta.m4a" type="audio/mpeg">
-                         Your browser does not support the audio element.
-               </audio>
-  <div class="image-gallery">
-    <img src="images/Screenshot_20241029_093030.jpg" alt="Receipt 1" class="expand-img">
-    <img src="images/" alt="Receipt 2" class="expand-img">
-  </div>
-                 <br>
-              </div>
-                </div>
-   <div class="remarks">Remarks : Paid for HOTEL EVERES</div>
-        <h2>Oct 30 (Night Home) -> Piggybank : 9,000 NC CASH </h2>
-
-            </div>
-
-      <span class="old_amount">Total : Rs.38,200 NC</span>
-        <h2> DECEMBER 2024</h2>
-          <h2> DEC 20 (Night Home) -> ABC TRIP : 15,000 NC CASH</h2>
-      <br> <br> <br>
-
-<a href="Downloadables/1.esewa_9818837215.zip" download>
-  <button class="download-btn">Download Esewa Statements (9818837215)</button>
-</a>                              <br>
-<a href="Downloadables/2.prabhu_statements_2023.zip" download>
-  <button class="download-btn">Download Prabhu Statements (2023)</button>
-</a>                              <br>
-<a href="Downloadables/3.prabhu_statements_2024.zip" download>
-  <button class="download-btn">Download Prabhu Statements (2024)</button>
-</a>
-
- </div>
- </div>
-
-</div>
- <!--  ------------------------------------------------Flex Card 4 --------------------------------------------------------------------- -->
-
-        <div class="card">
-           <div class="container">
-
-                 <h1>Esewa History of Ritesh </h1>
-                
-
-                 <h1>9818837215 and 9818837216 2024</h1>
-
-<div class="event-summary">
-  <h2>Summary</h2>
-  <p class="event-text">
-Nigger
-  </p>
-</div>
-
-    <h2>📅 April 2024</h2>
-    <table class="custom-table">
-      <tr><th>Date</th><th>Time</th><th>Details</th><th>Amount</th></tr>
-      <tr><td class="red_text">Apr 4</td><td>02:23:39</td><td class="red_text">Received from PRABHU BANK LTD</td><td class="red_text">₹5,600</td></tr>
-      <tr><td>Apr 4</td><td>05:07:26</td><td>Received from NMB BANK LTD</td><td>₹600</td></tr>
-      <tr><td>Apr 5</td><td>02:02:20</td><td>Sent to Abhinav Aman (Aman Loan Ritesh)</td><td>-₹6,000</td></tr>
-      <tr><td colspan="4" class="final">Final Balance (April): ₹200.00</td></tr>
-
-    </table>
-
-    <h2>📅 June 2024</h2>
-    <table class="custom-table">
-      <tr><th>Date</th><th>Time</th><th>Details</th><th>Amount</th></tr>
-      <tr><td class="red_text">Jun 5</td><td>01:34:41</td><td class="red_text">Received from PRABHU BANK LTD</td><td class="red_text">₹1,000</td></tr>
-      <tr><td>Jun 5</td><td>01:35:18</td><td>Received from GLOBAL IME BANK LTD</td><td>₹1,000</td></tr>
-      <tr><td>Jun 5</td><td>01:43:31</td><td>Paid for Ncell Pack</td><td>-₹60</td></tr>
-      <tr><td>Jun 5</td><td>01:49:38</td><td>Sent to Rajesh Kumar Bose (Townhall Hotel)</td><td>-₹1,500</td></tr>
-
-      <tr><td class="red_text">Jun 29</td><td>15:53:31</td><td class="red_text">Received from PRABHU BANK LTD</td><td class="red_text">₹4,000</td></tr>
-      <tr><td>Jun 29</td><td>16:08:23</td><td>Paid to NEW GANESH HOTEL</td><td>-₹3,500</td></tr>
-      <tr><td>Jun 29</td><td>18:00:28</td><td>Sent to Bibek Chauhan</td><td>-₹200</td></tr>
-      <tr><td>Jun 29</td><td>18:55:47</td><td>Bank transfer charges</td><td>-₹10</td></tr>
-      <tr><td>Jun 29</td><td>21:11:35</td><td>Sent to Pawan Kumar Mahato</td><td>-₹200</td></tr>
-      <tr><td>Jun 29</td><td>21:19:16</td><td>Ncell top-up</td><td>-₹100</td></tr>
-    </table>
-
-    <h2>📅 July 2024 </h2>
-    <table class="custom-table">
-      <tr><th>Date</th><th>Time</th><th>Details</th><th>Amount</th></tr>
-      <tr><td class="red_text">Jul 2</td><td>00:38:03</td><td class="red_text">Received from PRABHU BANK LTD</td><td class="red_text">₹3,000</td></tr>
-      <tr><td>Jul 2</td><td>00:39:11</td><td>Sent to Rajesh Kumar Bose (Townhall Hotel)</td><td>-₹3,000</td></tr>
-
-      <tr><td class="red_text">Jul 8</td><td>22:41:43</td><td class="red_text">Received from PRABHU BANK LTD</td><td class="red_text">₹4,000</td></tr>
-      <tr><td class="red_text">Jul 8</td><td>22:53:34</td><td class="red_text">Received from PRABHU BANK LTD</td><td class="red_text">₹1,000</td></tr>
-
-      <tr><td>Jul 8</td><td>23:04:59</td><td>Money transferred to NIC ASIA BANK LTD.</td><td>-₹4,000</td></tr>
-      <tr><td>Jul 9</td><td>05:03:22</td><td>Fund Transferred to Abhishek Kumar Sarraf</td><td>-₹1000</td></tr>
-    </table>
-
-    <h2>📅 Aug 2024 </h2>
-    <table class="custom-table">
-      <tr><th>Date</th><th>Time</th><th>Details</th><th>Amount</th></tr>
-      <tr><td class="red_text">Aug 15</td><td>20:17:08</td><td class="red_text">Received from PRABHU BANK LTD</td><td class="red_text">₹1,600</td></tr>
-      <tr><td>Aug 15</td><td>21:01:37</td><td>Fund Transferred to Abhinav Aman (Aman Loan Ritesh)</td><td>-₹1,600</td></tr>
-
-      <tr><td class="red_text">Aug 25</td><td>15:16:03</td><td class="red_text">Received from PRABHU BANK LTD</td><td class="red_text">₹1,600</td></tr>
-
-      <tr><td class="red_text">Aug 25</td><td>15:17:52</td><td class="red_text">Received from PRABHU BANK LTD</td><td class="red_text">₹1,600</td></tr>
-
-      <tr><td>Aug 25</td><td>21:52:26</td><td>Fund Transferred to KHUSBU COMMUNICATION (STAKE)</td><td>-₹3,200</td></tr>
-
-    </table>
-
-    <h2>📅 Oct 2024 </h2>
-    <table class="custom-table">
-      <tr><th>Date</th><th>Time</th><th>Details</th><th>Amount</th></tr>
-      <tr><td class="red_text">Oct 17</td><td>?</td><td class="red_text">?(9818837216)</td><td class="red_text">₹4,000</td></tr>
-      <tr><td class="red_text">Oct 18</td><td>?</td><td class="red_text">?(9818837216)</td><td class="red_text">₹5,800</td></tr>
-      <tr><td colspan="4" class="final"> 9818837216 Statements Not Available</td></tr>
-
-      <tr><td class="red_text">Oct 29</td><td>23:08:44</td><td class="red_text">Received from PRABHU BANK LTD</td><td class="red_text">₹3,000</td></tr>
-
-      <tr><td class="red_text">Oct 29</td><td>23:25:34</td><td class="red_text">Received from PRABHU BANK LTD</td><td class="red_text">₹2,000</td></tr>
-
-      <tr><td>Oct 29</td><td>23:28:28</td><td>Fund Transferred to Bibek Kumar Yadav</td><td>-₹3,035</td></tr>
-      <tr><td>Oct 30</td><td>00:50:03</td><td>Paid for HOTEL EVEREST</td><td>-₹2,000</td></tr>
-      <tr><td colspan="4" class="final"> Oct 30 (Night Home) -> Piggybank : 9,000 NC CASH </td></tr>
-
-
-    </table>
-    <h2>📅 Dec 2024 </h2>
-    <table class="custom-table">
-          <tr><td colspan="4" class="final"> DEC 20 (Night Home) -> ABC TRIP : 15,000 NC CASH</td></tr>
-
-    </table>
-
-
-</div>
-</div>
- <!--  ------------------------------------------------Flex Card 5 --------------------------------------------------------------------- -->
-
-        <div class="card">
-           <div class="special_container">
- 
-<div class="custom">
-
-
-  <h2>Coinswitch History of Prashanna</h2>
-
- 
-  <div class="note">Note: All withdrawals were made to Airtel Payments Bank of Prashanna (7978998558)</div>
-
-
-  <div class="summary">
-    <img src="friends/Ritesh.png" alt="Ritesh">
-
-    <div class="summary-text">
-      <strong>Ritesh</strong> still owes  <span  class="old_amount">INR 3,10,056</span> to Prashanna Shrestha.
-  <div class="note">Note: This is just Coinswitch Loans. 2nd Semester Fee + 3rd Semester Fee</div>
-
-    </div>
-  </div>
-
-<div class="event-summary">
-  <h2>Summary</h2>
-  <p class="event-text">
-Nigger
-  </p>
-</div>
-
-
-  <div class="timeline" id="historyContainer"></div>
-  <div class="note">Note: Nothing is edited .For proof Login Coinswitch Account (7978998558) OTP ps5470950@gmail.com PIN : 2580</div>
-
-<a href="Downloadables/Coinswitch.jpg" download>
-  <button class="download-btn">Download Coinswitch Transaction</button>
-</a>    
-
-<br>
-
-<a href="Downloadables/Airtelpaymentbank.pdf" download>
-  <button class="download-btn">Download Airtel Payment Bank Transaction</button>
-</a>          
-<br>
-
-<a href="Downloadables/CryptoChat.zip" download>
-  <button class="download-btn">Download Chats</button>
-</a>    
-</div>
-</div>
-</div>
-
-
-<!-- Lightbox Overlay -->
-<div id="lightbox-overlay" onclick="closeLightbox()">
-  <img id="lightbox-image" src="" alt="Expanded">
-</div>
-
-<!-- ----------------------------------------------Pop Up--------------------------------------------------------------------------------- -->
+    <!-- ----------------------------------------------Pop Up--------------------------------------------------------------------------------- -->
     <!-- Popup -->
     <div class="popup">
-        <img id="popup-image" src="" alt="Person Image">
-        <h3 id="popup-name"></h3>
-        <p><strong>Amount:</strong> <span id="popup-amount"></span></p>
-        <p><strong>Date:</strong> <span id="popup-date"></span></p>
-        <p><strong>Notes:</strong> <span id="popup-notes"></span></p>
-        <p><strong>Piggybank:</strong> <span id="popup-cash"></span></p>
-        <p><strong>Extra:</strong> <span id="popup-extra"></span></p>
+      <img id="popup-image" src="" alt="Person Image">
+      <h3 id="popup-name"></h3>
+      <p><strong>Amount:</strong> <span id="popup-amount"></span></p>
+      <p><strong>Date:</strong> <span id="popup-date"></span></p>
+      <p><strong>Notes:</strong> <span id="popup-notes"></span></p>
+      <p><strong>Piggybank:</strong> <span id="popup-cash"></span></p>
+      <p><strong>Extra:</strong> <span id="popup-extra"></span></p>
 
-        <button id="close-popup">Close</button>
+      <button id="close-popup">Close</button>
     </div>
 
-<!-- -----------------------------------------Java Script ----------------------------------------------------------------   -->
-<script src="js/coinswitchData.js"></script>
-<script src="js/script.js"></script>
+  </div>
+    <!-- -----------------------------------------Java Script ----------------------------------------------------------------   -->
+    <script src="js/script.js"></script>
+    <script src="js/loadCards.js"></script>
 
-<script>
-function toggleAudio(item) {
-  const audioDiv = item.querySelector('.audio-container');
-  const audioTag = item.querySelector('audio');
-  const source = audioTag.querySelector('source').src;
-  const filename = source.split('/').pop();
-
- 
-
-  // Hide others
-  document.querySelectorAll('.audio-container').forEach(div => {
-    if (div !== audioDiv) {
-      div.style.display = 'none';
-      div.querySelector('audio')?.pause();
-    }
-  });
-
-  // Toggle this one
-  if (audioDiv.style.display === 'none') {
-    audioDiv.style.display = 'block';
-  } else {
-    audioDiv.style.display = 'none';
-    audioTag.pause();
-  }
-}
+    <script>
+      function toggleAudio(item) {
+        const audioDiv = item.querySelector('.audio-container');
+        const audioTag = item.querySelector('audio');
+        const source = audioTag.querySelector('source').src;
+        const filename = source.split('/').pop();
 
 
 
-</script>
+        // Hide others
+        document.querySelectorAll('.audio-container').forEach(div => {
+          if (div !== audioDiv) {
+            div.style.display = 'none';
+            div.querySelector('audio')?.pause();
+          }
+        });
 
-<script>
-  const expandImgs = document.querySelectorAll('.expand-img');
-  const lightbox = document.getElementById('lightbox-overlay');
-  const lightboxImg = document.getElementById('lightbox-image');
+        // Toggle this one
+        if (audioDiv.style.display === 'none') {
+          audioDiv.style.display = 'block';
+        } else {
+          audioDiv.style.display = 'none';
+          audioTag.pause();
+        }
+      }
 
-  expandImgs.forEach(img => {
-    img.addEventListener('click', (e) => {
-      lightboxImg.src = e.target.src;
-      lightbox.style.display = 'flex';
-    });
-  });
 
-  function closeLightbox() {
-    lightbox.style.display = 'none';
-    lightboxImg.src = '';
-  }
-</script>
-<!-- -----------------------------------------Java Script ----------------------------------------------------------------   -->
+
+    </script>
+
+    <script>
+      const expandImgs = document.querySelectorAll('.expand-img');
+      const lightbox = document.getElementById('lightbox-overlay');
+      const lightboxImg = document.getElementById('lightbox-image');
+
+      expandImgs.forEach(img => {
+        img.addEventListener('click', (e) => {
+          lightboxImg.src = e.target.src;
+          lightbox.style.display = 'flex';
+        });
+      });
+
+      function closeLightbox() {
+        lightbox.style.display = 'none';
+        lightboxImg.src = '';
+      }
+    </script>
+
+    <script>
+
+      function toggleSummary() {
+        const summary = document.getElementById("abhinav-summary");
+        summary.style.display = summary.style.display === "block" ? "none" : "block";
+      }
+
+      document.querySelectorAll("li").forEach(li => {
+        const name = li.getAttribute("data-details");
+        if (name === "Abhinav Aman") {
+          li.addEventListener("click", () => {
+            const dropdown = document.getElementById("aman-dropdown");
+            if (dropdown.style.display === "block") {
+              dropdown.style.display = "none";
+            } else {
+              dropdown.style.display = "block";
+            }
+          });
+        }
+      });
+    </script>
+    <!-- -----------------------------------------Java Script ----------------------------------------------------------------   -->
 </body>
+
 </html>
