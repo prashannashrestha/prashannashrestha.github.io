@@ -156,41 +156,4 @@ highlightCashText();
         setInterval(updateElapsedTime, 1000);
         updateElapsedTime(); // Initial call
 
-/* ----------------------------------- CoinswitchHistory  Script ------------------------------------------------ */
-
-    const container = document.getElementById("historyContainer");
-    let totalDeposited = 0, totalWithdrawn = 0;
-
-    data.forEach(([datetime, type, amountStr, remark]) => {
-      const amount = parseFloat(amountStr.replace(/[₹,]/g, ""));
-      const isDeposit = type.includes("Deposit");
-
-      if (isDeposit) totalDeposited += amount;
-      else totalWithdrawn += amount;
-
-      const card = document.createElement("div");
-      const cardClass = isDeposit ? "deposit" : "withdrawal";
-      const icon = isDeposit ? "💰" : "💸";
-      const highlight = remark.toLowerCase().includes("ritesh") ? "highlight-ritesh" : "";
-
-      card.className = `transaction-card ${cardClass} ${highlight}`;
-      card.innerHTML = `
-        <div class="top-row">
-          <div>
-            <div class="type">${icon} ${type}</div>
-            <div class="status completed">Completed</div>
-          </div>
-          <div>
-            <div class="amount">${amountStr}</div>
-            <div class="datetime">${datetime}</div>
-          </div>
-        </div>
-        <div class="remarks">${remark}</div>
-      `;
-      container.appendChild(card);
-    });
-
-    const format = n => `₹${n.toLocaleString("en-IN")}`;
-    document.getElementById("totalDeposited").textContent = format(totalDeposited);
-    document.getElementById("totalWithdrawn").textContent = format(totalWithdrawn);
-    document.getElementById("balance").textContent = format(totalDeposited - totalWithdrawn);   
+ 
