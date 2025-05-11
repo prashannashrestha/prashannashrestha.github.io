@@ -1,6 +1,8 @@
+/* ----------------------------------- CoinswitchHistory  Script ------------------------------------------------ */
+
     const data = [
-      ["23 Feb 24, 09:41 PM", "UPI Deposit", "₹62,500", "3rd Semester Fee Prashanna"],
-      ["23 Feb 24, 09:52 PM", "UPI Deposit", "₹27,000", "3rd Semester Fee Prashanna"],
+      ["23 Feb 24, 09:41 PM", "UPI Deposit", "₹62,500", "3rd Semester Fee Prashanna","Custom message for this transaction", "path/to/image1.jpg"],
+      ["23 Feb 24, 09:52 PM", "UPI Deposit", "₹27,000", "3rd Semester Fee Prashanna","Custom message for this transaction", "path/to/image1.jpg"],
       ["25 Feb 24, 03:30 AM", "UPI Deposit", "₹53,000", "3rd Semester Fee Prashanna"],
       ["27 Feb 24, 06:20 PM", "Withdrawal", "₹1,000", "Prashanna Food"],
       ["04 Mar 24, 07:42 PM", "Withdrawal", "₹20,000", "Pankaj Loan PENDING"],
@@ -49,3 +51,42 @@
       ["16 Jun 24, 04:50 PM", "Withdrawal", "₹10,863", "ritesh sold my crypto NO PERMISSION"]
     ];
 
+
+const container = document.getElementById("historyContainer");
+
+data.forEach(([datetime, type, amountStr, remark, customText, imagePath], index) => {
+  const isDeposit = type.includes("Deposit");
+  const card = document.createElement("div");
+  const cardClass = isDeposit ? "deposit" : "withdrawal";
+  const icon = isDeposit ? "💰" : "💸";
+  const highlight = remark.toLowerCase().includes("ritesh") ? "highlight-ritesh" : "";
+
+  card.className = `transaction-card ${cardClass} ${highlight}`;
+  card.style.cursor = "pointer"; // So it looks clickable
+
+  card.innerHTML = `
+    <div class="top-row">
+      <div>
+        <div class="type">${icon} ${type}</div>
+        <div class="status completed">Completed</div>
+      </div>
+      <div>
+        <div class="amount">${amountStr}</div>
+        <div class="datetime">${datetime}</div>
+      </div>
+    </div>
+    <div class="remarks">${remark}</div>
+    <div class="details" style="display: none; margin-top: 10px;">
+      <p>${customText}</p>
+      <img src="${imagePath}" alt="Custom Image" style="max-width: 100%; border-radius: 8px;">
+    </div>
+  `;
+
+  card.addEventListener("click", () => {
+    const details = card.querySelector(".details");
+    const isVisible = details.style.display === "block";
+    details.style.display = isVisible ? "none" : "block";
+  });
+
+  container.appendChild(card);
+});
